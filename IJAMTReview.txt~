@@ -1,0 +1,108 @@
+Reviewer Blind Comments to Author:
+The work presented in the paper is about the continuation of the project in the reference [1] where a laser tracker used to do error compensation. In this paper, on top of the static performance, dynamic performance is verified. The results show significant improvement on the accuracy of the machine.
+
+Some suggestion on improving the paper are:
+- The work shows ideas on improving the control of the machine by integrating a high accuracy measurement system into the low-level control. In this paper, the dynamic performance is involved, therefore it is of interest to see that the static compensation in the earlier work could just be applied directly without considering any dynamics model of the system.
+- The Laser Tracker Measurement Uncertainties should be included in the model. It should be explained that whether any filtering method was used in the experiments.
+- The sampling rate of the measurements should be considered when designing such a system. Although the computing device description was elaborated in the reference [1], it is important to see whether different sampling rates could affect the 
+
+
+Reviewer Confidential Comments to Editor:
+
+Please rate the technical/scientific merits of this paper:
+
+Contribution to the Field of Knowledge
+     [ ] Excellent
+     [ ] Good
+     [X] Fair
+     [ ] Poor
+
+Technical Content (Innovation)
+     [ ] Excellent
+     [X] Good
+     [ ] Fair
+     [ ] Poor
+
+Reference Value (Relevancy)
+     [ ] Excellent
+     [X] Good
+     [ ] Fair
+     [ ] Poor
+
+Is related/prior work well documented?
+     [ ] Excellent
+     [ ] Good
+     [ ] Fair
+     [X] Poor
+
+Are adequate examples included?  Practical value to industry?
+     [ ] Excellent
+     [X] Good
+     [ ] Fair
+     [ ] Poor
+
+Is mathematical development correct?
+     [ ] Excellent
+     [ ] Good
+     [ ] Fair
+     [X] Poor
+
+Should the paper be shortened or lengthened?
+  (Please indicate which section)
+     [X] Yes
+     [ ] No
+
+Introduction and System Description
+
+Are you aware of prior publication of similar papers by the authors?
+(Please include references, if any)
+     [ ] Yes
+     [X] No
+
+
+
+Please rate the presentation of the paper here:
+
+Is the paper well organized?
+     [ ] Excellent
+     [X] Good
+     [ ] Fair
+     [ ] Poor
+
+Is the manuscript clear and concise? Language acceptable?
+     [ ] Excellent
+     [X] Good
+     [ ] Fair
+     [ ] Poor
+
+Are references satisfactory and given correctly?
+     [ ] Excellent
+     [X] Good
+     [ ] Fair
+     [ ] Poor
+
+Are notations appropriate?
+     [ ] Excellent
+     [ ] Good
+     [ ] Fair
+     [X] Poor
+
+Does the abstract summarize well?
+     [ ] Excellent
+     [X] Good
+     [ ] Fair
+     [ ] Poor
+
+Is the title appropriate?
+     [X] Excellent
+     [ ] Good
+     [ ] Fair
+     [ ] Poor
+
+
+COMMENTS FOR THE EDITOR:
+the editor particular desires your specific comments on technical content, reference value, originality, and revisions needed for clarity, compactness, and/or presentation (writing, organization, and graphics).
+
+The paper is another example of extended work done in the earlier work in reference [1]. Dynamic path accuracy is given in this paper is useful to prove that the direct measurement method developed can compensate the error. The work is valuable towards the development of the Light Controlled Factory whereby it can increase flexibility and reconfigurability with minimum effort.
+
+The result is fairly given in both using the new method and the conventional method using a Ballbar test method. Although the process definition and mathematical derivation have been done in the earlier reference. However, it is necessary for completeness and repeatibility of the work presented in this paper that these should be included in , at least, a compact form.
