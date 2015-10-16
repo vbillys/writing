@@ -2,7 +2,7 @@
 title: A sample paper  
 author: Donald Duck
 date: October 1, 2014  
-bibliography: sample-library.bib
+bibliography: [sample-library.bib, isam.bib]
 csl: ieee.csl # chicago.csl
 reference-docx: path to your style template for MS Word
 abstract: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -63,7 +63,7 @@ x = \sum\limits_{i=0}^{z} 2^{i}Q
 ## Subsection 2.1
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque  ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque  ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo [link](http://www.http://daringfireball.net). You enter citations using @ and bibtex citation key, such as @donaldduck2014 if you want only the year in brackets, or [@donaldduck2013] for a normal ciation in author-date form within brackets. 
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque  ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo [link](http://www.http://daringfireball.net). You enter citations using @ and bibtex citation key, such as @donaldduck2014 if you want only the year in brackets, or [@donaldduck2013;@donaldduck2014;@Kaess08tro] for a normal ciation in author-date form within brackets. 
 
 This is the code for an image. Much simpler than in LaTeX. But you can also use LaTeX code here. Just keep in mind that LaTeX code is only rendered when converted to PDF. Conversion to Word or html won't pick it up. And see that figure referenced see \ref{fig:mylabel}.
 
@@ -102,7 +102,7 @@ See [my website][], or [my website].
 
 #### heading what one [header identifiers]
 
-#### heading what two [the section on header identifiers]
+#### heading what one [the section on header identifiers]
 
 ## My header ##    {#foo}
 
