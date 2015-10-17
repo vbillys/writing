@@ -128,6 +128,10 @@ isn't indented.
 
 ![image       \label{fig:mylabel}  caption](sample-image.jpg "beautiful cat")
 
+![another image from pgf matplotlib](fig_ex.pdf "pgf beautiful")
+
+![another image from png](fig_ex.png "png bad res if zoomed")
+
 # References
 
 The reference list is added here automatically by Pandoc:
