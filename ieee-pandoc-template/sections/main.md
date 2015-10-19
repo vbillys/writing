@@ -1,0 +1,74 @@
+# Introduction
+
+Testing Publish
+
+Working out an IEEE paper using Google Doc and pandoc
+
+# Introduction
+Some figure here? see this LaTex figure \ref{fig_sim}, also see \ref{fig_2} and \ref{fig_3}, and the lovely equation (\ref{eqn_example}).
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{fig_ex}
+\caption{Simulation results for the network.}
+\label{fig_sim}
+\end{figure}
+
+![image alt text \label{fig_2}](image_0.png)
+Fig.2 ya
+![image alt text \label{fig_3}](image_1.jpg)
+Fig.3 yaya
+Table here
+
+<table>
+  <tr>
+    <td>Some</td>
+    <td>Table</td>
+  </tr>
+  <tr>
+    <td>Papa</td>
+    <td>Yaya</td>
+  </tr>
+</table>
+
+
+via LaTex IEEE style
+
+## Subsection 1.1
+
+Lorem *ipsum* **dolor** sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. See Table \ref{table_example}.
+
+\begin{table}[!t]\renewcommand{\arraystretch}{1.3}\caption{A Simple Example Table, IEEE standard format}\label{table_example}\centering\begin{tabular}{c||c}\hline\bfseries First & \bfseries Next\\\hline\hline1.0 & 2.0\\\hline\end{tabular}\end{table}
+
+Equation, via mathjax
+
+The *Gamma function* satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the euler integral$$\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.$$
+
+Equation via LaTex
+
+You can enter LaTeX equations as inline math: such as $({e}^{i\pi }+1=0) \label{eqn_md1}$ or refering \ref{eqn_md1}, \ref{eqn_md2} and \ref{eqn_example}:
+
+$\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}\mathbf{i} & \mathbf{j} & \mathbf{k} \\\frac{\partial X}{\partial u} &  \frac{\partial Y}{\partial u} & 0 \\\frac{\partial X}{\partial v} & \frac{\partial Y}{\partial v} & 0\end{vmatrix} \label{eqn_md2}$
+
+\begin{equation}\label{eqn_example}x = \sum\limits_{i=0}^{z} 2^{i}Q\end{equation}
+
+## Captions and Reference
+
+## Citations
+
+@Corley-etal_2011[@Corley-etal_2012]
+
+\citeauthor{Corley-etal_2011}
+
+\citetext{\citeyear{Corley-etal_2011}; \citealp{Corley-etal_2012}}
+
+\citep{Corley-etal_2011}
+
+\citet{Corley-etal_2012}
+
+butts [@Corley-etal_2011]
+
+![Cool figure](example) {.two}
+
+# Conclusion
+
+yes, @Corley-etal_2012 confirmed butts
