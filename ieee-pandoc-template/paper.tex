@@ -1,6 +1,7 @@
-\documentclass[conference]{IEEEtran}
-%\documentclass[letterpaper, 10 pt, conference]{ieeeconf}
-%\documentclass[conference]{IEEEconf}
+%\documentclass[10 pt,letterpaper,conference]{IEEEtran}
+%\documentclass[10 pt,letterpaper,conference]{IEEEconf}
+\documentclass[10 pt,letterpaper,conference]{IEEEtran}
+
 
 
 \usepackage{amssymb,amsmath}
@@ -71,7 +72,7 @@
 
 
 
-\setlength{\parindent}{0pt}
+%\setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
@@ -82,18 +83,18 @@
 \title{System Architecture for a Class of Small Service Vehicle}
 
 \author{
-            \IEEEauthorblockN{Saputra, V. B.}
-        \IEEEauthorblockA{%
-            Institute for Infocomm Research \\
-            Singapore \\
-            saputravb@i2r.a-star.edu.sg}
-         \and
-            \IEEEauthorblockN{Ravichandiran, B.}
-        \IEEEauthorblockA{%
-            Institute for Infocomm Research \\
-            Singapore \\
-            ravib@i2r.a-star.edu.sg}
-        }
+		\IEEEauthorblockN{Saputra, V. B.}
+	\IEEEauthorblockA{%
+		Institute for Infocomm Research \\
+		1 Fusionopolis Way, Singapore 138632 \\
+	saputravb@i2r.a-star.edu.sg}
+	 \and
+		\IEEEauthorblockN{Ravichandiran, B.}
+	\IEEEauthorblockA{%
+		Institute for Infocomm Research \\
+		1 Fusionopolis Way, Singapore 138632 \\
+	ravib@i2r.a-star.edu.sg}
+	}
 
 \date{}
 
@@ -139,14 +140,14 @@
 \urlstyle{rm}
 
 % Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+%\ifx\paragraph\undefined\else
+%\let\oldparagraph\paragraph
+%\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+%\fi
+%\ifx\subparagraph\undefined\else
+%\let\oldsubparagraph\subparagraph
+%\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+%\fi
 
 \begin{document}
 \maketitle
@@ -176,32 +177,32 @@ marketable platform so that it benefits can really be advantageous to
 real users.
 \end{abstract}
 
-\begin{IEEEkeywords}
-    automobiles;
-    feature extraction;
-    intelligent transportation systems;
-    mobile robots;
-    optical scanners;
-    path planning;
-    trajectory control;
-    autonomous service vehicle;
-    drive-by-wire system;
-    driverless car;
-    electronic car;
-    lane detection algorithm;
-    lane keeping assistant;
-    laser scanner;
-    map free lane following;
-    path planning;
-    vehicle trajectory;
-    Laser radar;
-    Mobile robots;
-    Path planning;
-    Roads;
-    Testing;
-    Vehicles;
-    Wheels\end{IEEEkeywords}
-
+%%\begin{IEEEkeywords}
+%    %automobiles;
+%    %feature extraction;
+%    %intelligent transportation systems;
+%    %mobile robots;
+%    %optical scanners;
+%    %path planning;
+%    %trajectory control;
+%    %autonomous service vehicle;
+%    %drive-by-wire system;
+%    %driverless car;
+%    %electronic car;
+%    %lane detection algorithm;
+%    %lane keeping assistant;
+%    %laser scanner;
+%    %map free lane following;
+%    %path planning;
+%    %vehicle trajectory;
+%    %Laser radar;
+%    %Mobile robots;
+%    %Path planning;
+%    %Roads;
+%    %Testing;
+%    %Vehicles;
+%    %Wheels%\end{IEEEkeywords}
+%
 
 
 \thanks{*This work was supported by Autonomous Vehicle Department, Institute for Infocomm Research}
@@ -327,6 +328,7 @@ information}\label{extracting-useful-information}
 \end{itemize}
 
 \paragraph{Road curb}\label{road-curb}
+
 Road curb is the most reliable feature in road boundary detection. It is
 easy to detect and currently it is the baseline for localization.
 

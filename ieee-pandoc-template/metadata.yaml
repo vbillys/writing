@@ -1,21 +1,29 @@
 ---
 biblio-files: papers
 biblio-style: IEEEtranN-nourl # custom BST to ignore URLs in papers.bib
+cls_style: IEEEtran
 
 classoption:
     - conference
+papersize:
+    - letterpaper
+fontsize:
+    - 10 pt
 
-title: "System Architecture for a Class of Small Service Vehicle"
+title: 'System Architecture for a Class of Small Service Vehicle'
 
 author:
     - name: Saputra, V. B.
       affiliation: Institute for Infocomm Research
-      location: Singapore
+      location: 1 Fusionopolis Way, Singapore 138632
       email: saputravb@i2r.a-star.edu.sg
     - name: Ravichandiran, B.
       affiliation: Institute for Infocomm Research
-      location: Singapore
+      location: 1 Fusionopolis Way, Singapore 138632
       email: ravib@i2r.a-star.edu.sg
+
+#author_compiled_latex: 'Saputra V. Billy\thanks{Saputra V.B. is with Autonomous Vehicle Department, Institute for Infocomm Research (I2R), Agency for Science, Technology and Research (A*STAR),1 Fusionopolis Way, Singapore 138632 {\tt\small saputravb@i2r.a-star.edu.sg}}, Ravichandiran Balaji, and Wong C.Y. Anthony\thanks{Ravichandiran B. and Wong C.Y. Anthony are with Autonomous Vehicle Department, Institute for Infocomm Research (I2R), Agency for Science, Technology and Research (A*STAR),1 Fusionopolis Way, Singapore 138632. {\tt\small }}'
+author_compiled_latex: 'Saputra V. Billy, Ravichandiran Balaji, and Wong C.Y. Anthony\newline Autonomous Vehicle Department, Institute for Infocomm Research (I2R)\newline Agency for Science, Technology and Research (A*STAR),1 Fusionopolis Way, Singapore 138632\newline Corresponding author email: {\tt\small saputravb@i2r.a-star.edu.sg}}'
 
 keyword:
       - automobiles
