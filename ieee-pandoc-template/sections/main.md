@@ -12,7 +12,7 @@ Components of a typical autonomous or assistive driving system could be summariz
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{fig_ex}
+\includegraphics[width=2.5in]{HighLevel.pdf}
 \caption{Block Diagram of an autonomous vehicle driving system.}
 \label{fig_1}
 \end{figure}
@@ -29,12 +29,21 @@ Components of a typical autonomous or assistive driving system could be summariz
 
 ## Control
 
+Fig \ref{fig_2} shows a control error during simulation. A Stanley controller can be used for different type of course, such as parking, low speed, and medium travels.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{fig_ex.pdf}
+\caption{Example of matplotlib graph (vector graphic in the paper).}
+\label{fig_2}
+\end{figure}
 
 ## Path Planning
 
-\citeauthor{SongZW_IV_2015}
+Path planning done by \citeauthor{SongZW_IV_2015} has revealed the fact that small service vehicle can be robustly navigate the path as long as the localization gives its correct position. For more examples, readers are encouraged to read [@Corley-etal_2011]. In addition, @Corley-etal_2012 confirmed that localization can be affected by surrounding dynamic environment changes such as parked cars, and moving pedestrians. @Aalst-etal_2004 proposed a solution to this, but later the work has been verified not working in [@Abadi-etal_2008;@Abebe-etal_2009]. For more references on this problem, suggested readings are [@Ackerman-Halverson_1998;@Agrawal-etal_1998;@Ali-etal_2012;@Alipour-etal_2013].
 
 ## Mapping
+
 Procedure of mapping includes:
 
 1. Point cloud assembly
@@ -43,6 +52,7 @@ Procedure of mapping includes:
 
 ### Point cloud assembly
 
+The assembly process is aggregating several point cloud frames from sensor scans with some process of point cloud matching and registration.
 
 ### Point cloud registration
 
@@ -55,45 +65,95 @@ Procedure of mapping includes:
 
 #### Road curb
 
+Road curb is the most reliable feature in road boundary detection. It is easy to detect and currently it is the baseline for localization.
+
 #### Traffic signs/lights
-\begin{table}[!t]\renewcommand{\arraystretch}{1.3}\caption{A Simple Example Table, IEEE standard format}\label{table_example}\centering\begin{tabular}{c||c}\hline\bfseries First & \bfseries Next\\\hline\hline1.0 & 2.0\\\hline\end{tabular}\end{table}
 
 #### Building features
 
-The *Gamma function* satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the euler integral$$\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.$$
+
 
 ## Localization
-The localization is done by modeling the problem using **Gamma function** satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the euler integral:
+
+The localization is done by modeling the problem using *Gamma function* satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the **euler** integral:
+
 \begin{equation}
-\label{eqn_example}
+\label{eqn_example1}
 x = \sum\limits_{i=0}^{z} 2^{i}Q
 \end{equation}
 
+\begin{equation}
+\label{eqn_example2}
+\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
+\end{equation}
+
+\begin{equation}
+\label{eqn_example3}
+\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+\frac{\partial X}{\partial u} &  \frac{\partial Y}{\partial u} & 0 \\
+\frac{\partial X}{\partial v} & \frac{\partial Y}{\partial v} & 0
+\end{vmatrix}
+\end{equation}
+
+Equation (\ref{eqn_example2}) is convoluted by means of *Gaussian Distribution*. In other words, (\ref{eqn_example1}) depicts the spectrum of (\ref{eqn_example2}). The **eigen **matrix for the point cloud distribution is given in (\ref{eqn_example2}).
+
+
 # Safety Consideration
 
-$\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}\mathbf{i} & \mathbf{j} & \mathbf{k} \\\frac{\partial X}{\partial u} &  \frac{\partial Y}{\partial u} & 0 \\\frac{\partial X}{\partial v} & \frac{\partial Y}{\partial v} & 0\end{vmatrix} \label{eqn_md2}$
+Safety is very important in a critical mission project like autonomous service vehicle. Not only that robust operation is required, but also human safety must be prioritized in the system logic. Some components in the system that needs attention are listed in Table \ref{table_example}.
+
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.3}
+\caption{A Simple Example Table, IEEE standard format}
+\label{table_example}
+\centering
+\begin{tabular}{c||c}
+\hline\bfseries Component & \bfseries Risk\\
+\hline
+\hline Drive-By-Wire & Malfunction of motors\\
+\hline
+\hline GPS & GPS denied\\
+\hline
+\hline Camera & Cable loose\\
+\hline
+\end{tabular}
+\end{table}
+
 
 # Experimentation
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque malesuada ante eu quam. Vivamus tristique. Vivamus nec ante eget felis egestas scelerisque.
 
-## Captions and Reference
+Fig. \ref{coms1_bare} shows the first vehicle platform that we first retrofitted for the autonomous vehicle project.
 
-## Citations
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{coms1_bare}
+\caption{Experimentation of building vehicle platform.}
+\label{coms1_bare}
+\end{figure}
 
-@Corley-etal_2011[@Corley-etal_2012]
+## Sensors
 
-\citeauthor{Corley-etal_2011}
+Placement of the sensors on the autonomous vehicle can be seen in Fig. \ref{ipe_ex}, and their connection to the system can be summarized in Fig. \ref{dia_ex}.
 
-\citetext{\citeyear{Corley-etal_2011}; \citealp{Corley-etal_2012}}
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{ipe_ex.pdf}
+\caption{Placement of sensors.}
+\label{ipe_ex}
+\end{figure}
 
-\citep{Corley-etal_2011}
 
-\citet{Corley-etal_2012}
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{dia_ex.pdf}
+\caption{Diagram of sensors connection.}
+\label{dia_ex}
+\end{figure}
 
-butts [@Corley-etal_2011]
-
-![Cool figure](example) {.two}
 
 # Conclusion
 
-yes, @Corley-etal_2012 confirmed butts
+That’s all folks!
+

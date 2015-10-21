@@ -1,0 +1,439 @@
+\documentclass[conference]{IEEEtran}
+%\documentclass[letterpaper, 10 pt, conference]{ieeeconf}
+%\documentclass[conference]{IEEEconf}
+
+
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+
+
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={System Architecture for a Class of Small Service Vehicle},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[numbers,square]{natbib}
+\bibliographystyle{IEEEtranN-nourl}
+
+
+\usepackage{listings}
+
+
+
+
+
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\graphicspath{ {./figures/} }
+
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+
+
+\title{System Architecture for a Class of Small Service Vehicle}
+
+\author{
+            \IEEEauthorblockN{Saputra, V. B.}
+        \IEEEauthorblockA{%
+            Institute for Infocomm Research \\
+            Singapore \\
+            saputravb@i2r.a-star.edu.sg}
+         \and
+            \IEEEauthorblockN{Ravichandiran, B.}
+        \IEEEauthorblockA{%
+            Institute for Infocomm Research \\
+            Singapore \\
+            ravib@i2r.a-star.edu.sg}
+        }
+
+\date{}
+
+\usepackage{color}
+
+\definecolor{lightred}{RGB}{175,50,50}
+\definecolor{lightgreen}{RGB}{0,150,0}
+\definecolor{lightblue}{RGB}{50,50,175}
+
+\lstdefinelanguage{diff}{
+  morecomment=[f][\color{lightblue}]{diff },
+  morecomment=[f][\color{lightblue}]{index },
+  morecomment=[f][\color{lightblue}]{@@},     % group identifier
+  morecomment=[f][\color{lightred}]-,         % deleted lines
+  morecomment=[f][\color{lightgreen}]+,       % added lines
+  morecomment=[f][\color{lightblue}]{---}, % Diff header lines (must appear after +,-)
+  morecomment=[f][\color{lightblue}]{+++},
+}
+\hyphenation{}
+
+\newcommand{\attn}[1]{{\color{red}#1}}
+\newcommand{\desc}[1]{{\emph{\color{blue}#1}}}
+\newcommand{\needcite}{\attn{\tiny{[cite]}}}
+\newcommand{\todo}[1]{\colorbox{yellow}{\bf TODO: #1}}
+
+
+\lstset{ %
+  basicstyle=\ttfamily\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  columns=fixed,
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=10pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny, % the style that is used for the line-numbers
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  tabsize=2,                       % sets default tabsize to 2 spaces
+}
+
+\urlstyle{rm}
+
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+By the dawn of the new millennium, robotics has undergone a major
+transformation scope and dimensions. This expansion has been brought
+about by the maturity of field and the advances in its related
+technologies. From a largely dominant focus, robotics has been rapidly
+expanding into the challenges of the world. The recent technology
+development demonstrated how the fast growing progress toward the of new
+perception, control, and motion planning techniques allow autonomous
+vehicles not only to travel significant distances in off-road, but also
+to operate in urban scenarios. The expected impact in the commercial
+sector for automotive manufacturers is equally if not more: autonomous
+sensing and control constitute key technologies to vehicles the future
+that might help save thousands of lives now lost in traffic accidents.
+Imagine a large field of vehicles without drivers traversing 60 miles in
+live, operating entirely without human guidance. A complex course
+including, traffic circles, and parking lots, defined by just kilobytes
+of data, several meters wide traveling down lanes only slightly wider,
+using systems with an accuracy of several meters. Humans in full-size
+unmanned vehicles at speeds up to 60 miles per hour. This actually would
+become reality in the near future. This project aims to bring the recent
+development on autonomous driving technology into a more practical and
+marketable platform so that it benefits can really be advantageous to
+real users.
+\end{abstract}
+
+\begin{IEEEkeywords}
+    automobiles;
+    feature extraction;
+    intelligent transportation systems;
+    mobile robots;
+    optical scanners;
+    path planning;
+    trajectory control;
+    autonomous service vehicle;
+    drive-by-wire system;
+    driverless car;
+    electronic car;
+    lane detection algorithm;
+    lane keeping assistant;
+    laser scanner;
+    map free lane following;
+    path planning;
+    vehicle trajectory;
+    Laser radar;
+    Mobile robots;
+    Path planning;
+    Roads;
+    Testing;
+    Vehicles;
+    Wheels\end{IEEEkeywords}
+
+
+
+\thanks{*This work was supported by Autonomous Vehicle Department, Institute for Infocomm Research}
+
+\section{Introduction}\label{introduction}
+
+The computational requirements for autonomous driving are very
+demanding, because autonomous vehicles have to process large amount of
+online and offline data in order to sense and understand their
+environment within long range safety distances with high precision, make
+and perform driving decisions at real-time. Most current autonomous
+vehicle prototypes around the world employ powerful distributed systems
+consisting of multiple heterogeneous processors and systems for sensory
+data processing, sensor fusion, intelligent behavior, and driving
+control. These types of prototype systems are bulky, costly and power
+hungry, thus are not suitable for real world deployment. Recently, Audi
+developed an all-in-one embedded platform code named zFAS which
+incorporates multiple heterogeneous processors (ECU/MCUs, Application
+Processors, GPUs, FPGA and a video detection subsystem) on a single
+tightly integrated board with specialized communication architecture
+(including Deterministic Ethernet) to suit autonomous driving needs. The
+computing power equals to the entire electronics architecture of today's
+Audi vehicles, yet at a fraction of the size, cost and power
+consumption. Such a platform is invaluable to eventually bring
+autonomous driving technologies to the mass market.
+
+This paper aims to describe and propose a generic design of the system
+architecture based on the chosen compute components and the
+characteristics / requirements of sensor fusion and autonomous driving
+applications, integration, test and characterization for a class of
+small service vehicle.
+
+\section{Architecture}\label{architecture}
+
+Components of a typical autonomous or assistive driving system could be
+summarized in Fig. \ref{fig_1}. The system heavily depends on various
+types of sensory data and sensors of the same type are synced with one
+another through data sync modules. To make sense of sensor data, raw
+data processing is required for different types of available data.
+Overlapping field of views from different sensors could be combined and
+the processing result is fused through a Low Level Fusion module. This
+module also does some filtering to eliminate local noises and thus, make
+the information more robust to small disturbances. The output objects
+and localization data from low level fusion modules are then sent to a
+High Level Fusion Module whereby all objects and filtered sensor
+information are fused together to form a world model.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{HighLevel.pdf}
+\caption{Block Diagram of an autonomous vehicle driving system.}
+\label{fig_1}
+\end{figure}
+
+\subsection{Middleware}\label{middleware}
+
+{[}XME? Please fill in{]}
+
+\section{Components}\label{components}
+
+\subsection{Drive-By-Wire}\label{drive-by-wire}
+
+\subsection{Control}\label{control}
+
+Fig \ref{fig_2} shows a control error during simulation. A Stanley
+controller can be used for different type of course, such as parking,
+low speed, and medium travels.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{fig_ex.pdf}
+\caption{Example of matplotlib graph (vector graphic in the paper).}
+\label{fig_2}
+\end{figure}
+
+\subsection{Path Planning}\label{path-planning}
+
+Path planning done by \citeauthor{SongZW_IV_2015} has revealed the fact
+that small service vehicle can be robustly navigate the path as long as
+the localization gives its correct position. For more examples, readers
+are encouraged to read \citep{Corley-etal_2011}. In addition,
+\citet{Corley-etal_2012} confirmed that localization can be affected by
+surrounding dynamic environment changes such as parked cars, and moving
+pedestrians. \citet{Aalst-etal_2004} proposed a solution to this, but
+later the work has been verified not working in
+\citep{Abadi-etal_2008, Abebe-etal_2009}. For more references on this
+problem, suggested readings are
+\citep{Ackerman-Halverson_1998, Agrawal-etal_1998, Ali-etal_2012, Alipour-etal_2013}.
+
+\subsection{Mapping}\label{mapping}
+
+Procedure of mapping includes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Point cloud assembly
+\item
+  Point cloud registration
+\item
+  Extracting useful information
+\end{enumerate}
+
+\subsubsection{Point cloud assembly}\label{point-cloud-assembly}
+
+The assembly process is aggregating several point cloud frames from
+sensor scans with some process of point cloud matching and registration.
+
+\subsubsection{Point cloud registration}\label{point-cloud-registration}
+
+\subsubsection{Extracting useful
+information}\label{extracting-useful-information}
+
+\begin{itemize}
+\tightlist
+\item
+  Road curb
+\item
+  Traffic signs/lights
+\item
+  Building features
+\end{itemize}
+
+\paragraph{Road curb}\label{road-curb}
+Road curb is the most reliable feature in road boundary detection. It is
+easy to detect and currently it is the baseline for localization.
+
+\paragraph{Traffic signs/lights}\label{traffic-signslights}
+
+\paragraph{Building features}\label{building-features}
+
+\subsection{Localization}\label{localization}
+
+The localization is done by modeling the problem using \emph{Gamma
+function} satisfying \(\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N\) is
+via the \textbf{euler} integral:
+
+\begin{equation}
+\label{eqn_example1}
+x = \sum\limits_{i=0}^{z} 2^{i}Q
+\end{equation}
+
+\begin{equation}
+\label{eqn_example2}
+\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
+\end{equation}
+
+\begin{equation}
+\label{eqn_example3}
+\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+\frac{\partial X}{\partial u} &  \frac{\partial Y}{\partial u} & 0 \\
+\frac{\partial X}{\partial v} & \frac{\partial Y}{\partial v} & 0
+\end{vmatrix}
+\end{equation}
+
+Equation (\ref{eqn_example2}) is convoluted by means of \emph{Gaussian
+Distribution}. In other words, (\ref{eqn_example1}) depicts the spectrum
+of (\ref{eqn_example2}). The \textbf{eigen }matrix for the point cloud
+distribution is given in (\ref{eqn_example2}).
+
+\section{Safety Consideration}\label{safety-consideration}
+
+Safety is very important in a critical mission project like autonomous
+service vehicle. Not only that robust operation is required, but also
+human safety must be prioritized in the system logic. Some components in
+the system that needs attention are listed in Table \ref{table_example}.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.3}
+\caption{A Simple Example Table, IEEE standard format}
+\label{table_example}
+\centering
+\begin{tabular}{c||c}
+\hline\bfseries Component & \bfseries Risk\\
+\hline
+\hline Drive-By-Wire & Malfunction of motors\\
+\hline
+\hline GPS & GPS denied\\
+\hline
+\hline Camera & Cable loose\\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Experimentation}\label{experimentation}
+
+Fig. \ref{coms1_bare} shows the first vehicle platform that we first
+retrofitted for the autonomous vehicle project.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{coms1_bare}
+\caption{Experimentation of building vehicle platform.}
+\label{coms1_bare}
+\end{figure}
+
+\subsection{Sensors}\label{sensors}
+
+Placement of the sensors on the autonomous vehicle can be seen in Fig.
+\ref{ipe_ex}, and their connection to the system can be summarized in
+Fig. \ref{dia_ex}.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{ipe_ex.pdf}
+\caption{Placement of sensors.}
+\label{ipe_ex}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{dia_ex.pdf}
+\caption{Diagram of sensors connection.}
+\label{dia_ex}
+\end{figure}
+
+\section{Conclusion}\label{conclusion}
+
+That's all folks!
+
+\section*{Acknowledgments}\label{acknowledgments}
+\addcontentsline{toc}{section}{Acknowledgments}
+
+Thanks the AV team in I2R that can accomplish many wonderful demos
+within very short period of time. This leads to the conception of this
+paper and many outstanding results that have been used in the demos.
+
+                                    \renewcommand\refname{References}
+                        \bibliography{papers}
+
+    
+
+\end{document}
