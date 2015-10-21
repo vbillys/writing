@@ -2,6 +2,7 @@
 
 import matplotlib as mpl
 # mpl.use("pgf")
+mpl.use("Agg")
 pgf_with_pdflatex = {
     "pgf.texsystem": "pdflatex",
     "pgf.preamble": [
@@ -21,4 +22,5 @@ plt.text(2.5, 2., "sans-serif", family="sans-serif")
 plt.xlabel(u"µ is not $\\mu$")
 plt.tight_layout(.5)
 # plt.savefig('fig_ex.pdf')
-plt.savefig('fig_ex.png')
+# plt.savefig('fig_ex.png')
+plt.savefig('fig_ex.eps')
