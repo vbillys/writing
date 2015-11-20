@@ -53,11 +53,15 @@
 </section>
 
 <section>
+<!--
 <br>
 <br>
 <br>
 <br>
-<video>
+-->
+<br>
+<br>
+<video width="700" height="600">
   <source data-src="video/radar_esr_center.mp4" type="video/mp4" />
 </video>
 </section>
