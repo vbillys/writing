@@ -159,14 +159,14 @@ $endif$
 $if(author)$
 \author{
 	\IEEEauthorblockN{
-	$for(author)$
-	$author.name$\IEEEauthorrefmark{$author.refmark$}  
+	$for(author)$ 
+	$author.name$\IEEEauthorrefmark{$author.refmark$}$author.separator$ 
 	$endfor$
 	}
 	\IEEEauthorblockA{%
 		$authors_affiliation$ \\
 		$authors_location$ \\
-		Email: ($for(author)$ \IEEEauthorrefmark{$author.refmark$}$author.email$  $endfor$) $authors_email_suffix$
+		Email: ($for(author)$\IEEEauthorrefmark{$author.refmark$}$author.email$  $endfor$) $authors_email_suffix$
 	}
 }
 $endif$

@@ -20,36 +20,49 @@ author:
       location: 1 Fusionopolis Way, Singapore 138632
       email: saputravb
       refmark: 1
+      separator: ','
     - name: Ravichandiran, B.
       affiliation: Institute for Infocomm Research
       location: 1 Fusionopolis Way, Singapore 138632
       email: ravib
       refmark: 2
+      separator: ','
     - name: Chan, S. M.
       affiliation: Institute for Infocomm Research
       location: 1 Fusionopolis Way, Singapore 138632
       email: smchan
       refmark: 3
+      separator: ','
     - name: Wong, C. Y.
       affiliation: Institute for Infocomm Research
       location: 1 Fusionopolis Way, Singapore 138632
       email: cywong
       refmark: 4
+      separator: "\\"
     - name: Chia, H. Q.
       affiliation: Institute for Infocomm Research
       location: 1 Fusionopolis Way, Singapore 138632
       email: benjamin-chia
       refmark: 5
+      separator: ','
     - name: Kumar Limbu, D.
       affiliation: Institute for Infocomm Research
       location: 1 Fusionopolis Way, Singapore 138632
       email: dklimbu
       refmark: 6
+      separator: ','
+    - name: Jian, C.
+      affiliation: Institute for Infocomm Research
+      location: 1 Fusionopolis Way, Singapore 138632
+      email: jschen
+      refmark: 7
+      separator: ','
     - name: Han, B. S.
       affiliation: Institute for Infocomm Research
       location: 1 Fusionopolis Way, Singapore 138632
       email: bshan
-      refmark: 7
+      refmark: 8
+      separator: ','
 
 authors_affiliation: Institute for Infocomm Research
 authors_location: 1 Fusionopolis Way, Singapore 138632
