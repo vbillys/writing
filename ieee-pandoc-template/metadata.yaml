@@ -10,17 +10,50 @@ papersize:
 fontsize:
     - 10 pt
 
-title: 'System Architecture for a Class of Small Service Vehicle'
+
+title: 'Autonomous Service Vehicle Development for Urban Road Navigation'
+#title: 'System Architecture for a Class of Small Service Vehicle'
 
 author:
     - name: Saputra, V. B.
       affiliation: Institute for Infocomm Research
       location: 1 Fusionopolis Way, Singapore 138632
-      email: saputravb@i2r.a-star.edu.sg
+      email: saputravb
+      refmark: 1
     - name: Ravichandiran, B.
       affiliation: Institute for Infocomm Research
       location: 1 Fusionopolis Way, Singapore 138632
-      email: ravib@i2r.a-star.edu.sg
+      email: ravib
+      refmark: 2
+    - name: Chan, S. M.
+      affiliation: Institute for Infocomm Research
+      location: 1 Fusionopolis Way, Singapore 138632
+      email: smchan
+      refmark: 3
+    - name: Wong, C. Y.
+      affiliation: Institute for Infocomm Research
+      location: 1 Fusionopolis Way, Singapore 138632
+      email: cywong
+      refmark: 4
+    - name: Chia, H. Q.
+      affiliation: Institute for Infocomm Research
+      location: 1 Fusionopolis Way, Singapore 138632
+      email: benjamin-chia
+      refmark: 5
+    - name: Kumar Limbu, D.
+      affiliation: Institute for Infocomm Research
+      location: 1 Fusionopolis Way, Singapore 138632
+      email: dklimbu
+      refmark: 6
+    - name: Han, B. S.
+      affiliation: Institute for Infocomm Research
+      location: 1 Fusionopolis Way, Singapore 138632
+      email: bshan
+      refmark: 7
+
+authors_affiliation: Institute for Infocomm Research
+authors_location: 1 Fusionopolis Way, Singapore 138632
+authors_email_suffix: '\@i2r.a-star.edu.sg'
 
 #author_compiled_latex: 'Saputra V. Billy\thanks{Saputra V.B. is with Autonomous Vehicle Department, Institute for Infocomm Research (I2R), Agency for Science, Technology and Research (A*STAR),1 Fusionopolis Way, Singapore 138632 {\tt\small saputravb@i2r.a-star.edu.sg}}, Ravichandiran Balaji, and Wong C.Y. Anthony\thanks{Ravichandiran B. and Wong C.Y. Anthony are with Autonomous Vehicle Department, Institute for Infocomm Research (I2R), Agency for Science, Technology and Research (A*STAR),1 Fusionopolis Way, Singapore 138632. {\tt\small }}'
 author_compiled_latex: 'Saputra V. Billy, Ravichandiran Balaji, and Wong C.Y. Anthony\newline Autonomous Vehicle Department, Institute for Infocomm Research (I2R)\newline Agency for Science, Technology and Research (A*STAR),1 Fusionopolis Way, Singapore 138632\newline Corresponding author email: {\tt\small saputravb@i2r.a-star.edu.sg}}'
@@ -55,7 +88,9 @@ graphics: yes
 numbersections: yes
 
 abstract: |
-    By the dawn of the new millennium, robotics has undergone a major transformation scope and dimensions. This expansion has been brought about by the maturity of field and the advances in its related technologies. From a largely dominant focus, robotics has been rapidly expanding into the challenges of the world. The recent technology development demonstrated how the fast growing progress toward the of new perception, control, and motion planning techniques allow autonomous vehicles not only to travel significant distances in off-road, but also to operate in urban scenarios. The expected impact in the commercial sector for automotive manufacturers is equally if not more: autonomous sensing and control constitute key technologies to vehicles the future that might help save thousands of lives now lost in traffic accidents.  Imagine a large field of vehicles without drivers traversing 60 miles in live, operating entirely without human guidance. A complex course including, traffic circles, and parking lots, defined by just kilobytes of data, several meters wide traveling down lanes only slightly wider, using systems with an accuracy of several meters. Humans in full-size unmanned vehicles at speeds up to 60 miles per hour. This actually would become reality in the near future.  This project aims to bring the recent development on autonomous driving technology into a more practical and marketable platform so that it benefits can really be advantageous to real users.
+   Autonomous vehicle has benefited from robotics technology in the recent years due the maturity of the field and significant advances in its related technologies. As the sensors and actuators for building an autonomous vehicle are getting increasingly affordable, both industry and research now could leverage on autonomous vehicle platform for various purposes. This paper presents a study of realizing a class of autonomous vehicle called Autonomous Service Vehicle (ASV) in the context of urban road navigation. The goal is to apply autonomous vehicle technology for human service oriented tasks, such as automated road cleaning and grass sucking machine.  The ASV design is made for general service vehicle and it is intended to be reusable in term of hardware and software infrastructure. Components of the ASV are presented in a systematic manner in term of hardware, software and related development process. Experimentation was conducted to validate and evaluate the ASV. Finally, further directions and necessary customization are explained in order to adapt the ASV design for various projects. 
+   
+#    By the dawn of the new millennium, robotics has undergone a major transformation scope and dimensions. This expansion has been brought about by the maturity of field and the advances in its related technologies. From a largely dominant focus, robotics has been rapidly expanding into the challenges of the world. The recent technology development demonstrated how the fast growing progress toward the of new perception, control, and motion planning techniques allow autonomous vehicles not only to travel significant distances in off-road, but also to operate in urban scenarios. The expected impact in the commercial sector for automotive manufacturers is equally if not more: autonomous sensing and control constitute key technologies to vehicles the future that might help save thousands of lives now lost in traffic accidents.  Imagine a large field of vehicles without drivers traversing 60 miles in live, operating entirely without human guidance. A complex course including, traffic circles, and parking lots, defined by just kilobytes of data, several meters wide traveling down lanes only slightly wider, using systems with an accuracy of several meters. Humans in full-size unmanned vehicles at speeds up to 60 miles per hour. This actually would become reality in the near future.  This project aims to bring the recent development on autonomous driving technology into a more practical and marketable platform so that it benefits can really be advantageous to real users.
 
 # don't delete this line, bud
 ...

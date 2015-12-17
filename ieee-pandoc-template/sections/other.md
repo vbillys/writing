@@ -1,5 +1,5 @@
 # Acknowledgments {-}
 
-Thanks the AV team in I2R that can accomplish many wonderful demos within very short period of time. This leads to the conception of this paper and many outstanding results that have been used in the demos.
+Thanks the Autonomous Vehicle Department in Institute for Infocomm Research for the accomplishment of successful demonstrations within 9 months of development time. The project was supported by the Exploit Technologies Private Limited (ETPL) which is the commercialisation arm of the Agency for Science, Technology and Research (A*STAR) of Singapore. Recent demonstrations in 2015 have publicly shown to the Prime Minister, to the local transport authorities and to the local industries of Singapore that the technology is close to complete maturity and opened up human service applications stemmed from this endeavor. This lead to the conception of this paper and more results has triggered incoming publications which are on the same pipeline of this paper.
 
 # References
