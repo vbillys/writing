@@ -96,6 +96,17 @@ $if(listings)$
 \usepackage{listings}
 $endif$
 
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage{algpseudocode}
+%\usepackage[]{algorithm2e}
+\usepackage{pifont}
+
+
+%\makeatletter
+%\algrenewcommand\ALG@beginalgorithmic{\footnotesize}
+%\makeatother
+
 $if(lhs)$
 \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
 $endif$
