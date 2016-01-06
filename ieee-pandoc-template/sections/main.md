@@ -1,10 +1,16 @@
 # Introduction
 
-Recent advancements in robotics technology have brought great benefit to autonomous vehicle research. Since the Defense Advanced Research Projects Agency (DARPA) 2003 Grand Challenge [@ventures2006stanley] , many research groups have focused their effort to solving problems related to autonomous vehicle navigation. As laboratories and research centers bringing the autonomous vehicle technologies to real world applications, acceptance of fully unmanned vehicles will still be a challenge. However, with current progress it can be shown that for a specific problem domain, in this case service vehicles, the autonomous vehicle can be utilized for automation of human service oriented tasks, such as automated road cleaning and grass sucking machine. The Autonomous Vehicle Department at the Institute for Infocomm Research has developed an Autonomous Service Vehicle (ASV) as a prototype to demonstrate autonomous vehicle capability tasked for a service vehicle.
+Recent advancements in robotics technology have brought great benefit to autonomous vehicle research. Since the Defense Advanced Research Projects Agency (DARPA) 2003 Grand Challenge [@ventures2006stanley] , many research groups have focused their effort to solving problems related to autonomous vehicle navigation. As laboratories and research centers bringing the autonomous vehicle technologies to real world applications, acceptance of fully unmanned vehicles will still be a challenge. However, with current progress it can be shown that for a specific problem domain, in this case service vehicles, the autonomous vehicle can be utilized for automation of human service oriented tasks, such as automated road cleaning and grass sucking machine. The Autonomous Service Vehicle (ASV) has been developed as a prototype to demonstrate autonomous vehicle capability tasked for a service vehicle.
 
+<!--
 The computational requirements for autonomous driving are very demanding, because autonomous vehicles have to process large amount of online and offline data in order to sense and understand their environment within long range safety distances with high precision, make and perform driving decisions at real-time. Most current autonomous vehicle prototypes around the world employ powerful distributed systems consisting of multiple heterogeneous processors and systems for sensory data processing, sensor fusion, intelligent behavior, and driving control. These types of prototype systems are bulky, costly and power hungry, thus are not suitable for real world deployment. Recently, Audi developed an all-in-one embedded platform code named zFAS which incorporates multiple heterogeneous processors (ECU/MCUs, Application Processors, GPUs, FPGA and a video detection subsystem) on a single tightly integrated board with specialized communication architecture (including Deterministic Ethernet) to suit autonomous driving needs. The computing power equals to the entire electronics architecture of today’s Audi vehicles, yet at a fraction of the size, cost and power consumption. Such a platform is invaluable to eventually bring autonomous driving technologies to the mass market.
+-->
 
-This paper contribution is threefold. First, to describe and propose a generic design of the system architecture based on necessary components for the ASV applications, and its integration. Second, we propose the ASV architecture to be adopted into generic service plaform for both research and application purposes. Although, the implementation of the ASV presented here should be specific to certain vendors, the components required to  build an ASV are generic and should be reproducible with similar effort. Lastly, we presented discussion on issues surfaced during tests and characterization of the ASV performance.
+\citeauthor{7225673} [@7225673]  introduced mobile service robot for electrical power plant inspection. This in turn could reduce or replace human involvement in manual inspection process. \citeauthor{6629559} [@6629559] presented an autonomous driving car for research purposes that includes features that allows for urban road navigation. Similarly, \citeauthor{7225765} [@7225765] introduced a more advanced autonomous driving platform consisting of high performance cameras, LIDARs, and other navigation sensors. While these platforms are very attractive in term of their capability of handling big streams of sensors data, the computing power is high preventing them to be used for small service vehicle. The ASV proposed in this paper aims to solve autonomous navigation and to lower the requirement of the compute devices and sensors, by narrowing down the scope of application to service domain.
+
+Autonomous platforms are usually retrofitted from manually driven vehicles. This approach is commonly used because it is the most viable and affordable way to install a Drive-By-Wire (DBW) system into existing vehicle rather than to entirely build a new one. It was also studied that automation driver’s task has positive impact to improving driving safety [@stanton1996fly]. Various effort to assist drivers has lead to development of ADAS system [@6232125;@7225760]. A DBW enables computerized control of the vehicle by means of replacing human drivers with actuators, which are usually driven by electrical motors [@1035218]. The ASV presented in this paper is retrofitted from a compact electric vehicle, and thus we studied the feasibility of converting this class of vehicles into service vehicles. 
+
+This paper contribution is threefold. First, to describe and propose a generic design of the system architecture based on necessary components for the ASV applications, and its integration. Second, we propose the ASV architecture to be adopted into generic service platform for both research and application purposes. Although, the implementation of the ASV presented here are to certain sources, the components required to  build an ASV are generic and should be reproducible with similar effort. Lastly, we presented discussion on issues surfaced during tests and characterization of the ASV performance.
 
 ## Problem Formulation
 
@@ -60,12 +66,12 @@ Components of a typical autonomous or assistive driving system could be summariz
 
 ## Middleware
 
-Middleware refers to the software component that connects the various modules across network distributed system. It makes communication transparent to connected modules by providing reliability, consistency, security,   and privacy capabilities. In our architecture CHROMOSOME[@CHROMOSOME] a Message-oriented middleware is used. CHROMOSOME implements publish-subscribe message paradigm, which also provides more guarantees with respect to the behaviour of distributed applications. [@buckl2014chromosome] The other  alternative middlewares are Robotics Operating System (ROS) [@quigley2009ros] and  OpenRTM-aist [@ando2005rt] which are commonly used in the field of Robotics. 
+Middleware refers to the software component that connects the various modules across network of distributed system. It makes communication transparent to connected modules by providing reliability, consistency, security,   and privacy capabilities. In our architecture CHROMOSOME (abbreviated as XME) [@CHROMOSOME], a message-oriented middleware is used. XME implements publish-subscribe message paradigm, which provides guarantees with respect to the behaviour of distributed applications [@buckl2014chromosome]. The other  alternative middlewares are Robotics Operating System (ROS) [@quigley2009ros] and  OpenRTM-aist [@ando2005rt] which are commonly used in the field of robotics.
 
 ## Localization
 
 
-Fig \ref{fig_2} shows a control error during simulation. A Stanley controller can be used for different type of course, such as parking, low speed, and medium travels.
+Fig. \ref{fig_2} shows a control error during simulation. A Stanley controller can be used for different type of course, such as parking, low speed, and medium travels.
 
 \begin{figure}[!t]
 \centering
@@ -145,20 +151,21 @@ Equation (\ref{eqn_example2}) is convoluted by means of *Gaussian Distribution*.
 
 ## Path Planning
 
-Path planning module will help to generate reference trajectory path for autonomous vehicle to follow from a start point to a goal point. The ASV's path planning is implemented in two stages: Global Path Planning and Local Path Planning. 
+Path planning module will help to generate reference trajectory path for autonomous vehicle to follow from a start to a destination point. The ASV path planning is implemented in two stages: Global Path Planning and Local Path Planning. 
 
 ### Global Path Planning
 
-Global path planning aims to generate the global waypoints to reach destination from origin point. Global path planning can be achieved by notable path planning algorithm such $A^{*}$, $D^{*}$, Rapidly exploring random map, probabilistic roadmap. In our case for teach and repeat solution, global path planning is generated by manual drive and record the UTM coordinates for path driven.  Recorded path are later downsampled by post processing algorithm \ref{eqn_global_path} for saving memory and path optimization. During post processing duplicate UTM points (x,y), straight line points, points within vehicle turning radius are downsampled.  For example if original recorded waypoints could contain ~35000 UTM points (x,y), after post processing the global waypoints will contain ~100 UTM points.  
+Global path planning aims to generate the global waypoints to reach destination from origin point. Global path planning can be achieved by notable path planning algorithm such $A^{*}$, $D^{*}$, Rapidly exploring random map, probabilistic roadmap. In our case for teach and repeat solution, global path planning is generated by manual drive and record the UTM coordinates for path driven.  Recorded path are later downsampled by post processing Alg. \ref{alg_global_waypoints} for saving memory and path optimization. During post processing duplicate UTM points, straight line points, points within vehicle turning radius are downsampled.  For example if original recorded waypoints could contain ~35000 UTM points, after post processing the global waypoints will contain ~100 UTM points.  
 
 \begin{algorithm}
        \scriptsize
        \algsetup{linenosize=\scriptsize}
-       \caption{Generate Global Waypoints}
+       \caption{Global Path Planning}
        \label{alg_global_waypoints}
        \begin{algorithmic}[1]
-           \REQUIRE minLen, minRad, recordedPoint
-           	\STATE initialize points[], globalPoints[]
+           \REQUIRE minLen, minRad, recordedPoint[] \COMMENT{array contains x, y and $\theta$}
+           	\STATE initialize points[], globalPoints[] \COMMENT{array contains x, y and $\theta$}
+
            	\STATE totalGlobalPoints = 0
            	
            	\FORALL{$points$ in $recordedPoint$}
@@ -205,10 +212,12 @@ continue
 
 ### Local Path Planning
 
-Local path planning is also termed as motion planning which aims to generate dynamic reference trajectory with vehicle dynamics constraints such as turning radius, velocity from point A to point B. Global path planning generates reference trajectory from start point to goal point, whereas Local path planning is recursively generated along global path for specified distance with higher sample rate to achieve smoother vehicle navigation. Local path planning helps to deal with dynamic circumstances like avoiding obstacle along planned global path.
+Local Path Planning aims to generate dynamic reference trajectory with vehicle dynamics constraints such as turning radius and vehicle velocity. Whereas Global Path Planning generates reference trajectory from a start point to a goal point, Local Path Planning is recursively generated during vehicle movement with higher sample rate to achieve smoother vehicle navigation. Local Path Planning helps to deal with dynamic circumstances like avoiding obstacle along the path generated by the Global Path Planning.
 
-In our local path planning module is developed with Dubins-Curve library [@DubinsCurves]  which based Dubins path method [@dubinscurve1957]. Dubins path is one of the simplest geometric method to compute shortest path between two points in  Euclidean plane with curvature (Turning radius) as constraint on the path. Dubins path is suitable nonholonomic wheeled mobile robot or car like autonomous vehicles. Car like wheeled robots or autonomous vehicle will motion such going straight (S), turning left(L) and turning right(R). Thus according to Dubins [@dubinscurve1957] optimal path will be always combinational of {LSL, RSR, RSL, LSR, LRL, RLR} this six possibilities. For details description on Dubins curves and equations, readers are encouraged to read section 15.3.1 in [@lavalle2006planning]
+In our local path planning module is developed with Dubins-Curve library [@DubinsCurves]  which based Dubins path method [@dubinscurve1957]. Dubins path is one of the simplest geometric method to compute shortest path between two points in  Euclidean plane with curvature radius as constraint on the path. Dubins path is suitable nonholonomic wheeled mobile robot or car-like autonomous vehicles. Dubins path is built on top of the assumption that non-holonomic vehicle has typical motion of going straight (S), turning left(L) and turning right(R). According to Dubins [@dubinscurve1957@]optimal path will be always one of the six possible motion sequences: {LSL, RSR, RSL, LSR, LRL, RLR}. For details on Dubins method, readers can refer to section 15.3.1 in [@lavalle2006planning].
 	
+Local Path Planning Alg. \ref{alg_local_waypoints} is processed everytime the vehicle has travelled certain distance and whenever obstacle is detected. If an obstacle found to be obstructing the global path, local path will be shifted to the left or right side of obstacle boundary based on environmental factors for safer avoiding. An example of the Local Path Planning avoidance is shown on Fig. \ref{veh_avoid_close}.
+
 
 <!--
 Path planning done by \citeauthor{SongZW_IV_2015} has revealed the fact that small service vehicle can be robustly navigate the path as long as the localization gives its correct position. For more examples, readers are encouraged to read [@Corley-etal_2011]. In addition, @Corley-etal_2012 confirmed that localization can be affected by surrounding dynamic environment changes such as parked cars, and moving pedestrians. @Aalst-etal_2004 proposed a solution to this, but later the work has been verified not working in [@Abadi-etal_2008;@Abebe-etal_2009]. For more references on this problem, suggested readings are [@Ackerman-Halverson_1998;@Agrawal-etal_1998;@Ali-etal_2012;@Alipour-etal_2013].
@@ -219,17 +228,49 @@ Path planning done by \citeauthor{SongZW_IV_2015} has revealed the fact that sma
 -->
 
 
+\begin{algorithm}
+	  \scriptsize
+     \algsetup{linenosize=\scriptsize}
+
+      \caption{Local Path Planning}
+      \label{alg_local_waypoints}
+      \begin{algorithmic}[1]
+          \REQUIRE currentPos, obstaclePoints[], globalPoints[], turnRadius, stepSize, maxLen
+          	\STATE initialize localPoints[], startPoint[], endPoint[] \COMMENT{array contains x, y and $\theta$}
+          	\STATE wayLen = 0
+			
+			\STATE $globalClose \leftarrow$ Find closest $globalPoints$ to $currentPos$ \COMMENT{closest points based on Euclidean distance}
+			
+			\STATE $startPoint$ = $globalPoints[globalClose]$			
+			
+			\WHILE{$startPoint$ is not a last globalPoint $\AND$ $wayLen \leq maxLen$ }
+				
+          		\STATE $endPoint$ = $globalPoints[startPoint + 1]$
+			
+				\IF{$obstaclePoints$ exists between $startPoint and endPoint$}
+          		\STATE $endPoint \leftarrow$ will be shifted point where obstaclePoint exist. \COMMENT{Based on environment path shift will either left or right}
+          		\ENDIF           		
+          		
+          		\STATE $wayLen \leftarrow$ add Dubins Path Length for $startPoint$ and $endPoint$
+          		\STATE $localPoints \leftarrow$ append Dubins Path for $startPoint$ and $endPoint$ with given $turnRadius$ and $stepSize$
+          		\STATE $startPoint$ = $endPoint$
+          	\ENDWHILE
+          	
+      \end{algorithmic}
+\end{algorithm}
+
 ## Control    
 
-Vehicle control or autonomous navigation is  one of the key component for autonomous vehicle. Vehicle control performs necessary action to follow the intended path generated by path planner for smoother navigation towards destination point. The gas, brake control for longitudinal direction will be handled by velocity control and the steering control for turning across lateral direction will handled by lateral control module.
+Vehicle control or autonomous navigation is  one of the key component for autonomous vehicle. Vehicle control performs necessary action to follow the intended path generated by path planner for smooth navigation towards destination point. The gas and brake control for longitudinal direction will be handled by the velocity control module and the steering control for turning across lateral direction will handled by the lateral control module.
 
 ### Velocity control    
 
 Velocity control will estimate the gas, brake motor position in the drive by wire system for maintaining the desired velocity and braking for the vehicle. The desired velocity of the vehicle is determined with the modules input such as path planning, obstacle detection and health monitoring system. 
-For autonomous lateral control the fixed constant velocity will not be a wise choice, since the navigation path is not always straight line of travel. The path may consists of various turns and unexpected circumstances like obstacles. For smoother path following and avoid jerkiness of vehicle, speed profiling have to done based on path curvatures and speed limits. Based on the data collected by manual driving, the speed is calculated for various path curvatures (turns). During the local path generation, the curvature of path is calculated and desired speed will be assigned to each curvatures across the path. To avoid rapid speed change and to make velocity transition smooth from straight line to curvature areas velocity averaging is performed in the direction of end to path start.
-Apart from speed determined by speed profiler across the path, in event of obstacle detection vehicle will also perform action like slow down or stops based on obstacle detected distance. In the event of certain module error or network communication  failure, health monitoring system will perform stop action based on severity of error.
-To achieve desired velocity, the controller need to calculate the desired gas/brake position of the motor. Thus one of the frequently used controller technique closed loop PID controller is implemented. The closed loop PID controller helps in noise rejection and robustness of control with design flexibility. 
-ased on desired velocity, the controller will calculate the motor position and passes to drive by wire (DBW) system. Drive by wire system will convert controller command to control signal and passes to the motor. The wheel encoder will help to measure the speed precisely and feedback to the controller for the necessary action. The block diagram of the velocity control implementation is shown in Fig \ref{fig_vel_control}. The governing control law is given in the following calculation: 
+For autonomous lateral control the fixed constant velocity will not be a wise choice, since the navigation path is not always straight line of travel. The path may consists of various turns and unexpected circumstances like obstacles. For smoother path following and avoid jerkiness of vehicle, speed profiling have to done based on path curvatures and speed limits. Based on the data collected by manual driving, the speed is calculated for various path curvatures. During the local path generation, the curvature of path is calculated and desired speed will be assigned to each curvatures across the path. To avoid rapid speed change and to make velocity transition smooth from straight line to curvature areas velocity averaging is performed in the direction of end to path start.
+Apart from speed determined by speed profiler across the path, in event of obstacle detection vehicle will also perform action like slow down or stops based on the obstacle proximity to vehicle. In the event of certain module error or network communication  failure, health monitoring system will adjust the speed based on determined severity.
+
+To achieve desired velocity, a closed loop Proportional-Integral-Derivative (PID) controller is implemented to compute the desired gas/brake position of the motor. The closed loop PID controller helps in noise rejection and robustness of control with design flexibility. 
+Based on desired velocity, the controller will calculate the motor position and passes to drive by wire (DBW) system. The wheel encoder measures the speed precisely and provide feedback to the controller. The block diagram of the velocity control implementation is shown in Fig \ref{fig_vel_control}. The governing control law of the PID controller is given in the following:
 
 \begin{equation}
 \label{eqn_pid}
@@ -254,14 +295,16 @@ The heading error $\theta_{e}$ is calculated by difference in vehicle heading $\
 \label{eqn_heading_error}
 \theta_{e} = \theta - \theta_{r}
 \end{equation}
-When the cross track error $C_{e}$ is non-zero, it adjusts $\delta$ such that the intended trajectory intersects the reference path tangent from $(R_{x}, R_{y})$ at velocity in time $V_{t}$ units from the front axle  center point $(P_{x}, P_{y})$. The resulting steering control law by combining two terms are shown in (\ref{eqn_stanley_equation}). The figure \ref{fig_stanley} illustrates the geometric relationship of control parameters.
+When the cross track error $C_{e}$ is non-zero, it adjusts $\delta$ such that the intended trajectory intersects the reference path tangent from $(R_{x}, R_{y})$ at velocity in time $V_{t}$ units from the front axle  center point $(P_{x}, P_{y})$. The resulting steering control law by combining the two terms are shown in (\ref{eqn_stanley_equation}). $k_{h}$ and $k_{c}$ are the gain constants for heading error and cross error, respectively. Fig. \ref{fig_stanley} illustrates the geometric relationship of control parameters.
 
 \begin{equation}
 \label{eqn_stanley_equation}
 \delta(t) = k_{h}\theta_{e} + tan^{^{-1}}\left (\frac{k_{c}C_{e}(t)}{V_{x}(t)}  \right )
 \end{equation}
 
-Fig ?? shows a control error during simulation. A Stanley controller can be used for different type of course, such as parking, low speed, and medium travels.
+<!--
+Fig. ?? shows a control error during simulation. A Stanley controller can be used for different type of course, such as parking, low speed, and medium travels.
+-->
 
 \begin{figure}[!t]
 \centering
@@ -274,30 +317,98 @@ Fig ?? shows a control error during simulation. A Stanley controller can be used
 ## Health Monitoring  
 
 
-Safety is very important in a critical mission project like autonomous service vehicle. Not only that robust operation is required, but also human safety must be prioritized in the event of malfunctions or catastrophic failures. Health monitoring system is based on publish-subscribe model. This allows both centralized and distributed monitoring model. In the initialization stage, each ASV functional module component subscribes to a health topic proceeding completion of self-diagnosis. The health topic is provided by the Central Health Monitor (CHM). In the operational stage, modules are to send unique description and event identification to the CHM. 
+Safety is very important in a critical mission project like autonomous service vehicle. Not only that robust operation is required, but also safety must be prioritized in the event of malfunctions or catastrophic failures. Health monitoring system is based on publish-subscribe model. This allows both centralized and distributed monitoring model. In the initialization stage, each ASV functional module component subscribes to a health topic proceeding completion of self-diagnosis. The health topic is provided by the Central Health Monitor (CHM). In the operational stage, modules are to send unique description and event identification with timestamp to the CHM. 
 
 The CHM is responsible for reporting any important event to the user, log the event, and take suitable action based on severity of the detected failure or error. In addition, each module has their own reporting module, but limited only to each module scope of operation. The severity levels and the corresponding actions can be summarized in Table \ref{table_risk_hm}. 
 
+<!--
 \begin{table}[!t]
 \renewcommand{\arraystretch}{1.3}
-\caption{Severity levels in health monitoring module}
+\caption{Severity Level in Health Monitoring}
 \label{table_risk_hm}
 \centering
+\begin{IEEEeqnarraybox}[\IEEEeqnarraystrutmode\IEEEe
+qnarraystrutsizeadd{2pt}{1pt}]{v/c/v/c/v}
+\IEEEeqnarrayrulerow\\
+&\mbox{Range}&&\Omega(m)&\\
+\IEEEeqnarraydblrulerow\\
+\IEEEeqnarrayseprow[3pt]\\
+&x < 0&&\Omega(m)=\sum\limits_{i=0}^{m}K^{-i}&\IEEEe
+qnarraystrutsize{0pt}{0pt}\\
+\IEEEeqnarrayseprow[3pt]\\
+\IEEEeqnarrayrulerow\\
+\IEEEeqnarrayseprow[3pt]\\
+&x \ge 0&&\Omega(m)=\sqrt{m}\hfill&\IEEEeqnarraystru
+tsize{0pt}{0pt}\\
+\IEEEeqnarrayseprow[3pt]\\
+\IEEEeqnarrayrulerow
+\end{IEEEeqnarraybox}
+\end{table}
+-->
+
+
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.3}
+\caption{Severity Level in Health Monitoring}
+\label{table_risk_hm}
+\centering
+\footnotesize
+\begin{tabular}{p{1.5cm}||p{6.cm}}
+  \hline
+    \textbf{Severity} &
+    \textbf{Actions} \cr
+  \hline\hline
+    None & Normal Operation. Status Logging. \cr
+  \hline
+    Warn & Display warning on user interface. Status logging. \cr
+  \hline
+    Abort & Vehicle aborts mission, plans and stops at a safe zone. Status logging and displaying on user interface. \cr
+  \hline
+    Emergency Stop & Vehicle aborts mission immediately. Status logging and displaying on user interface. All modules restart and perform self-diagnosis. \cr
+  \hline
+\end{tabular}
+\end{table}
+
+<!--
+{\textwidth}{p{3cm}p{4.5cm}}
+\begin{IEEEeqnarraybox}[\IEEEeqnarraystrutmode\IEEEeqnarraystrutsizeadd{2pt}{1pt}]{v/c/v/c/v}
+\IEEEeqnarrayrulerow\\
+&\mbox{Severity}&&\mbox(Actions)&\\
+&\mbox{Range}&&\Omega(m)&\\
+\IEEEeqnarraydblrulerow\\
+\IEEEeqnarrayseprow[3pt]\\
+&x < 0&&\Omega(m)=\sum\limits_{i=0}^{m}K^{-i}&\IEEEe
+qnarraystrutsize{0pt}{0pt}\\
+\IEEEeqnarrayseprow[3pt]\\
+\IEEEeqnarrayrulerow\\
+\IEEEeqnarrayseprow[3pt]\\
+&x \ge 0&&\Omega(m)=\sqrt{m}\hfill&\IEEEeqnarraystrutsize{0pt}{0pt}\\
+\IEEEeqnarrayseprow[3pt]\\
+\IEEEeqnarrayrulerow
+\end{IEEEeqnarraybox}
+\end{table}
+
+<!--
 \begin{tabular}{c||c}
 \hline\bfseries Severity & \bfseries Actions\\
 \hline
 \hline None & Normal Operation. Status Logging\\
 \hline
-\hline Warn & Display warning on user interface. Status logging. Health monitor observes.\\
+\hline Warn & Display warning on user interface. \\Status logging. Health monitor observes.\\
 \hline
-\hline Abort & Vehicle aborts mission, plans and stops at a safe zone. Status logging and displaying on user interface. Health monitor observes.\\
+\hline Abort & Vehicle aborts mission, \\plans and stops at a safe zone. \\Status logging and displaying on user interface. \\Health monitor observes.\\
 \hline
-\hline Emergency Stop & Vehicle aborts mission immediately. Status logging and displaying on user interface. All modules restarts and perform self-diagnosis.\\
+\hline Emergency Stop, \\Vehicle aborts mission immediately. \\Status logging and displaying on user interface. \\All modules restart and perform self-diagnosis.\\
 \end{tabular}
-\end{table}
+-->
+
 
 ## Human Machine Interface
-Web based Human Machine Interface (HMI) is developed to monitor and control vehicle remotely. 
+
+Human Machine Interface (HMI) is a graphical user interface where users could control and monitor the ASV. We have developed a web based HMI, so that the ASV could be monitored and controlled from any remote location. Remote control functions include emergency stop immediate request, task scheduling and change or reroute the ASV global path plan.
+Our web based HMI is developed with websocket [@fette2011websocket] protocol implementation for achieving low-latency, long-running  bidirectional communication. For security concern, HMI can be accessed only from intranet with unique private IP assigned for the ASV and user need to authenticate with username and password. Any HTML5 supported browser can be used to access the HMI. The HMI consist of dashboard, system interface and settings interface. They individually has different scope of information and options.
+For example, Fig. \ref{fig_hmi} shows the HMI dashboard. The dashboard is essential for vehicle monitoring information such as precise ASV position on the map, vehicle speed, battery level and system log for displaying critical error logs and network status. The system interface is used to manage individual modules. It has options to starting, to stop and to view error logs. The settings interface is used to modify AVS parameters such as maximum speed, braking distance, velocity control and lateral control gain.
 
 
 
@@ -401,7 +512,12 @@ Fig. 2. Example of matplotlib graph (vector graphic in the paper)
 \label{veh_avoid_close}
 \end{figure}
 
+## Adaptation for specific service function
+
 # Conclusion
 
-That’s all folks!
+The ASV has been developed to handle human service tasks. It has generic architecture which is reproducible for other purpose of use. During the development of the ASV, issues had surfaced, and dealt with current approaches. The main function of the ASV is to navigate through set of prior taught waypoints. Precise localization is achieved by combining GPS reading and a prior map generated using LIDAR. This allows adaptation to various human oriented service tasks, with appropriate tooling mounted. The experimental prototype results verified that the ASV is able to execute the path reliably and safely. Currently, the low level controller has been implemented in an embedded microcontroller platform. It is of current ongoing work that other functional modules will be implemented in a compact, low cost and low power compute device, enabling possibilities of efficiently retrofitting compact vehicles or existing service machines into ASVs. This full embedded implementation and more experiments on study to deal with specific services will be conducted and reported in the future.
 
+<!--
+That’s all folks!
+-->

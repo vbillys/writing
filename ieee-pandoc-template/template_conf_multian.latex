@@ -107,6 +107,10 @@ $endif$
 %\algrenewcommand\ALG@beginalgorithmic{\footnotesize}
 %\makeatother
 
+\usepackage{tabularx}
+\usepackage{array}
+
+
 $if(lhs)$
 \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
 $endif$
