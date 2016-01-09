@@ -1,12 +1,16 @@
 ---
 biblio-files: papers
-biblio-style: IEEEtranN-nourl # custom BST to ignore URLs in papers.bib
+#biblio-style: IEEEtranN-nourl # custom BST to ignore URLs in papers.bib
+biblio-style: IEEEtranN # custom BST to ignore URLs in papers.bib
+#cls_style: ieeeconf
+#cls_style: IEEEtran_18a
+#cls_style: IEEEtran_18b
 cls_style: IEEEtran
 
 classoption:
     - conference
 papersize:
-    - letterpaper
+    - a4paper
 fontsize:
     - 10 pt
 

@@ -1,7 +1,14 @@
+
+
+\newcommand{\CLASSINPUTtoptextmargin}{104pt}
+\newcommand{\CLASSINPUTbottomtextmargin}{54pt}
+\newcommand{\CLASSINPUToutersidemargin}{37pt}
+\newcommand{\CLASSINPUTinnersidemargin}{54pt}
+
+%\renewcommand{\IEEEtitletopspaceextra}{18pt}
 %\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{IEEEtran}
 %\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{IEEEconf}
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$cls_style$}
-
 
 $if(linestretch)$
 \usepackage{setspace}
@@ -168,7 +175,9 @@ $if(verbatim-in-note)$
 $endif$
 
 $if(title)$
-\title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
+\renewcommand{\IEEEtitletopspaceextra}{18pt}
+%\title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
+\title{\LARGE \bf $title$}
 $endif$
 
 $if(author)$
@@ -242,6 +251,8 @@ $if(lof)$
 $endif$
 
 $body$
+
+\small
 
 $if(natbib)$
     $if(biblio-files)$
