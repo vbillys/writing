@@ -1,6 +1,6 @@
 # Introduction
 
-Recent advancements in robotics technology have brought great benefit to autonomous vehicle research. Since the Defense Advanced Research Projects Agency (DARPA) 2003 Grand Challenge [@ventures2006stanley], many research groups have focused their effort to solving problems related to autonomous vehicle navigation. As laboratories and research centers bringing the autonomous vehicle technologies to real world applications, acceptance of fully unmanned vehicles will still be a challenge. However, with current progress it can be shown that for a specific problem domain, in this case service vehicles, the autonomous vehicle can be utilized for automation of human service oriented tasks, such as automated road cleaning,  grass cutting and leaves sucking machine. This is supported by the growth of service robotics industry in the recent years [@SVR_Nov_15].  \citeauthor{7225673} [@7225673]  introduced mobile service robot for electrical power plant inspection. This in turn could reduce or replace human involvement in manual inspection process. \citeauthor{6629559} [@6629559] presented an autonomous driving car for research purposes that includes features that allows for urban road navigation. Similarly, \citeauthor{7225765} [@7225765] introduced a more advanced autonomous driving platform consisting of high performance cameras, LIDARs, and other navigation sensors. While these platforms are very attractive in term of their capability of handling big streams of sensors data, the demanding computing power renders them unsuitable for small service vehicle. The Autonomous Service Vehicle (ASV) proposed in this paper is developed as a prototype to demonstrate autonomous vehicle capability tasked for a service vehicle.
+Recent advancements in robotics technology have brought great benefit to autonomous vehicle research. Since the Defense Advanced Research Projects Agency (DARPA) 2003 Grand Challenge [@ventures2006stanley], many research groups have focused their effort to solving problems related to autonomous vehicle navigation. As laboratories and research centers bringing the autonomous vehicle technologies to real world applications [@Ford_Jan_16], acceptance of fully unmanned vehicles will still be a challenge. However, with current progress it can be shown that for a specific problem domain, in this case service vehicles, the autonomous vehicle can be utilized for automation of human service oriented tasks, such as automated road cleaning,  grass cutting and leaves sucking machine. This is supported by the growth of service robotics industry in the recent years [@SVR_Nov_15].  \citeauthor{7225673} [@7225673]  introduced mobile service robot for electrical power plant inspection. This in turn could reduce or replace human involvement in manual inspection process. \citeauthor{6629559} [@6629559] presented an autonomous driving car for research purposes that includes features that allows for urban road navigation. Similarly, \citeauthor{7225765} [@7225765] introduced a more advanced autonomous driving platform consisting of high performance cameras, LIDARs, and other navigation sensors. While these platforms are very attractive in term of their capability of handling big streams of sensors data, the demanding computing power renders them unsuitable for small service vehicle. The Autonomous Service Vehicle (ASV) proposed in this paper is developed as a prototype to demonstrate autonomous vehicle capability tasked for a service vehicle.
 
 Autonomous platforms are usually retrofitted from manually driven vehicles. This approach is commonly used because it is the most viable and affordable way to install a Drive-By-Wire (DBW) system into existing vehicle rather than to entirely build a new one. It was also studied that automation driver’s task has positive impact to improving driving safety [@stanton1996fly]. Various effort to assist drivers has lead to development of ADAS system [@6232125;@7225760]. A DBW enables computerized control of the vehicle by means of replacing human drivers with actuators, which are usually driven by electrical motors [@1035218]. The ASV presented in this paper is retrofitted from a compact electric vehicle [@SongZW_IV_2015], and thus we studied the feasibility of converting this class of vehicles into service vehicles. 
 
@@ -17,7 +17,7 @@ The main service types for ASV are related to defense, agriculture and inspectio
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{HighLevel.pdf}
+\includegraphics[width=3.5in]{ecoms_arch.pdf}
 \caption{Block Diagram of an autonomous vehicle driving system.}
 \label{fig_1}
 \end{figure}
@@ -30,7 +30,12 @@ Middleware refers to the software component that connects the various modules ac
 
 ## Localization
 
-
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{localize_2.pdf}
+\caption{Feature Detection and Particle Filter of Localization process.}
+\label{fig_localize}
+\end{figure}
 
 ## Mapping
 
@@ -193,7 +198,7 @@ Where $GB$ is gas-brake position value, $E$ is the velocity error, $dE$ is the d
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{pid_velocity.pdf}
+\includegraphics[width=3.5in]{pid_velocity.pdf}
 \caption{Velocity control based on closed loop PID.}
 \label{fig_vel_control}
 \end{figure}
@@ -221,7 +226,7 @@ When the cross track error $C_{e}$ is non-zero, it adjusts $\delta$ such that th
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{stanley_2.pdf}
+\includegraphics[width=1.5in]{stanley_2.pdf}
 \caption{Stanley controller geometry}
 \label{fig_stanley}
 \end{figure}
@@ -273,7 +278,7 @@ For example, Fig. \ref{fig_hmi} shows the HMI dashboard. The dashboard is essent
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{hmi.pdf}
+\includegraphics[width=3.0in]{hmi.pdf}
 \caption{HMI dashboard interface}
 \label{fig_hmi}
 \end{figure}
@@ -285,10 +290,12 @@ Fig. \ref{coms1_bare} shows the first vehicle platform that we first retrofitted
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{coms1_bare}
-\caption{Experimentation of building vehicle platform.}
+\includegraphics[height=1.7in]{coms2_1.pdf}
+\caption{Vehicle platform for the ASV.}
 \label{coms1_bare}
 \end{figure}
+
+<!-- \includegraphics[width=2.5in]{coms2_zw.jpg} -->
 
 ## Setup
 
@@ -297,16 +304,16 @@ Placement of the sensors on the autonomous vehicle can be seen in Fig. \ref{ipe_
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{ipe_ex.pdf}
-\caption{Placement of sensors.}
+\includegraphics[height=1.6in]{ipe_ex.pdf}
+\caption{Placement of components in the ASV.}
 \label{ipe_ex}
 \end{figure}
 
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{dia_ex.pdf}
-\caption{Diagram of sensors connection.}
+\includegraphics[width=1.9in]{dia_ex.pdf}
+\caption{Diagram of components connection.}
 \label{dia_ex}
 \end{figure}
 
@@ -317,8 +324,21 @@ Placement of the sensors on the autonomous vehicle can be seen in Fig. \ref{ipe_
 
 ### Drive-By-Wire
 
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{Overview.jpg}
+\caption{Drive-by-Wire installation of the ASV.}
+\label{fig_DBW}
+\end{figure}
 
-### Power System	
+### Power Distribution	
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=1.9in]{power_distro.jpg}
+\caption{Electrical diagram of the ASV.}
+\label{fig_power}
+\end{figure}
 
 
 ### Sensors
@@ -343,18 +363,23 @@ y = y + (\Delta v + \sin\theta)
 
 where $\Delta\theta$ is the yaw rate obtained from IMU, $\theta$ is the heading, $\Delta v$ is distance obtained from wheel motion sensor, x and y are the Euclidean coordinates of the odometry position.
 
-#### 2D LIDAR
-
-#### 3D LIDAR
+#### Laser Range Sensors
+LIDAR ( Light Detection and Ranging) or LADAR, is one of the popular light range sensors used in various field of Robotics, Autonomous Vehicles, and Geo-mapping, forestry, etc. LIDAR will provide the distance of the object by emitting laser towards it and analysing its reflection.
 
 
 #### Camera
-
-
+In our experiment, we used the camera (Logitech C930e) for video data logging and remote monitoring via the HMI interface. Camera video frames are read using video4linux api, which later encoded and streamed in WebM format with ffmpeg and ffserver setup. 
+ 
 ### Safety System
+Safety is a primary concern for any autonomous system, AVS should be stopped safely in any unexpected circumstances, such as sensor failures or bugs in software modules. In our AVS experiment, we have implemented safety in three levels. First level via our Health Monitoring system which monitors hardware, software modules and takes necessary action on failures. Second level via Remote Software E-Stop via HMI interface and Third level via Wireless Emergency stop system which works on 900MHz and 2.4GHz frequency. 
 
 
 ## Testing Results and Evaluation
+Testing is carried out in an urban environment for the distance of 1km range. As explained in the global path planning, waypoints record by manual driving and processed. Figure \ref{map_waypoint}shows the map of the urban environment road structure and global trajectory for testing. For autonomous driving, the maximum velocity is capped by 4m/s and static obstacles are placed in 3 locations as shown on Fig. \ref{veh_path_overview}.
+Fig.\ref{vel_error_test}shows the output of velocity control with respective to desired velocity. Velocity controller achieves desired velocity linearly and little noise is also observed during constant velocity. Between 900 to 950 cycle time there is a sudden drop of velocity is noticed, which is caused by dynamic obstacle along the path.
+Fig.\ref{control_error_test}shows the output of lateral control such as angle error, lateral distance error (cross-track error) and final steering output. Our control parameter is tuned to tolerate localization error up to 20 cm, thus our final steering output follows angle error closely unless there is a steady lateral distance error. In the event of turning in the path higher error is observed, but due to vehicle constraint maximum steering output is limited to 0.41 radians. 
+
+Fig.\ref{veh_path_overview}shows the vehicle traveled path during the testing respective to reference trajectory. 
 
 
 
@@ -363,40 +388,55 @@ where $\Delta\theta$ is the yaw rate obtained from IMU, $\theta$ is the heading,
 
 
 
-
-<!--
+ 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=2.5in]{map_overlay.pdf}
 \caption{Recorded Waypoint to travel}
 \label{map_waypoint}
 \end{figure}
--->
+ 
 
-<!--
+ 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=2.5in]{vehicle_travelled_label.pdf}
 \caption{Vehicle travelled path overview}
 \label{veh_path_overview}
 \end{figure}
--->
+ 
 
 Fig. 2. Example of matplotlib graph (vector graphic in the paper)
 
-<!--
+ 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{vehicle_travelled_crop.pdf}
+\includegraphics[width=2.0in]{vehicle_travelled_crop.pdf}
 \caption{Vehicle avoidance path }
 \label{veh_avoid_close}
 \end{figure}
--->
+ 
+
+
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{velocity_error_1.pdf}
+\caption{Velocity Control output during testing }
+\label{vel_error_test}
+\end{figure}
+
+
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{control_error_1.pdf}
+\caption{Lateral Control output during testing }
+\label{control_error_test}
+\end{figure}
 
 ## Adaptation for specific service
-
 Depending on the specific task, various tools which include sensors and/or actuators that are necessary for the service task can be mounted onto the ASV. These sensors and actuators are collectively called as a workload. The ASV modules are customizable to carry the workload and perform the desired service task. The ASV localize itself by using information from map and GPS, thus eliminating the need for installing environmental guidance such as RFID [@7225673] or magnetic rails [@5354591]. For inspection and surveillance purposes, the camera data can be streamed and recorded via the HMI. For cleaning service, the ASV perform its task during its movement. This necessitates that the path planning follows certain objects, such as road pavement or curb. Combined with the method proposed in [@SongZW_IV_2015], the ASV can navigate to track arbitrary distinguishable object boundaries to conduct the cleaning. Nevertheless, thanks to the developed localization, arbitrary path rerouting is also possible. For services that require following certain moving object such as pedestrian [@7139259], the LIDAR and camera sensors could be used to track the object. Subsequently, the tracked object positions will become the destination points for the ASV path planner.
-
 
 # Conclusion
 
