@@ -374,7 +374,7 @@ The original vehicle comes with steering and gas/brake pedals. The Drive-By-Wire
 \label{fig_power}
 \end{figure}
 
-The power supply for the CPU, DBW, sensors and other peripherals is provided by a separated rechargeable Lithium Polymer (LiPo) batteries. The autonomous operation runs independently on the LiPo batteries to avoid complication that may arise if the main batteries is tapped. Furthermore, power supply for ASV is crucial as the autonomous system depends on it. Therefore, additional Power Supply Units (PSU) and a UPS are installed such as shown in Fig. \ref{fig_power}. There are multiple redundancies power line to secure fail-safe and fault-tolerant operation of the ASV during its navigation. In addition, VI unit is made of multiple stack of microcontroller and relay boards in order to ensure safe interfacing to/from the vehicle. Fans are installed to provide regulate temperature inside the box.
+The power supply for the CPU, DBW, sensors and other peripherals is provided by a separated rechargeable Lithium Polymer (LiPo) batteries. The autonomous operation runs independently on the LiPo batteries to avoid complication that may arise if the main batteries is tapped. Furthermore, power supply for ASV is crucial as the autonomous system depends on it. Therefore, additional Power Supply Units (PSU) and a UPS are installed such as shown in Fig. \ref{fig_power}. There are multiple redundancies power line to secure fail-safe and fault-tolerant operation of the ASV during its navigation. In addition, VI unit is made of multiple stack of microcontroller and relay boards in order to ensure safe interfacing to/from the vehicle. Fans are installed to regulate temperature inside the box.
 
 ### Sensors
 Autonomous navigation of the ASV heavily depends on the perception system which data comes from various sensors.
@@ -385,7 +385,7 @@ Autonomous navigation of the ASV heavily depends on the perception system which 
 Odometry is a method to fuse the motion sensors data to obtain the position of any mobile robots. 
 -->
 
-Odometry position is estimated via accumulating the motion sensors data over time. Pure odometry position is not recommended for  long-term navigation, since the motion sensor error will accumulate drift in the actual position over time. The navigation relies on the localization module to fuse odometry data with GPS data and the developed map based localization. The odometry position is derived from the equation \ref{eqn_simple_odometry}. The following two motion sensors are installed in the ASV: a wheel motion sensor (Kistler Wheel Pulse Transducers) to calculate vehicle travelled distance, and GPS/IMU sensor (Xsens MTi-G-700 GPS) to measure global positions and heading rate. 
+Odometry position is estimated via accumulating the motion sensors data over time. Pure odometry position is not recommended for  long-term navigation, since the motion sensor error will accumulate drift in the actual position over time. The navigation relies on the localization module to fuse odometry data with GPS data and the developed map based localization. The odometry position is derived from the (\ref{eqn_simple_odometry}). The following two motion sensors are installed in the ASV: a wheel motion sensor (Kistler Wheel Pulse Transducers) to calculate vehicle travelled distance, and GPS/IMU sensor (Xsens MTi-G-700 GPS) to measure global positions and heading rate. 
 
 \begin{equation}
 \begin{split}
