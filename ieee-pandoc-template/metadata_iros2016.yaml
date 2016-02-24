@@ -1,0 +1,120 @@
+---
+biblio-files: paperIROS2016
+#biblio-style: IEEEtranN-nourl # custom BST to ignore URLs in papers.bib
+biblio-style: IEEEtranN # custom BST to ignore URLs in papers.bib
+#cls_style: ieeeconf
+#cls_style: IEEEtran_18a
+#cls_style: IEEEtran_18b
+cls_style: IEEEtran
+
+classoption:
+    - conference
+papersize:
+    - a4paper
+fontsize:
+    - 10 pt
+
+
+title: 'Development of Human Tracking and Following for a Patrolling Robot'
+#title: 'System Architecture for a Class of Small Service Vehicle'
+
+author:
+    - name: Adiwahono, A. H.
+      affiliation: Institute for Infocomm Research
+      location: 1 Fusionopolis Way, Singapore 138632
+      email: adiwahonoah
+      refmark: 1
+      separator: ','
+    - name: Saputra, V. B.
+      affiliation: Institute for Infocomm Research
+      location: 1 Fusionopolis Way, Singapore 138632
+      email: saputravb
+      refmark: 2
+      separator: ','
+    #- name: Chan, S. M.
+      #affiliation: Institute for Infocomm Research
+      #location: 1 Fusionopolis Way, Singapore 138632
+      #email: smchan
+      #refmark: 3
+      #separator: ','
+    #- name: Chia, H. Q.
+      #affiliation: Institute for Infocomm Research
+      #location: 1 Fusionopolis Way, Singapore 138632
+      #email: benjamin-chia
+      #refmark: 5
+      separator: ','
+    - name: Ren, Q.
+      affiliation: Institute for Infocomm Research
+      location: 1 Fusionopolis Way, Singapore 138632
+      email: renqy
+      refmark: 6
+      separator: ','
+      #separator: ' '
+    - name: Tan, B. H.
+      affiliation: Institute for Infocomm Research
+      location: 1 Fusionopolis Way, Singapore 138632
+      email: tanbh
+      refmark: 4
+      #separator: "\\"
+      separator: " "
+    #- name: Jian, C.
+      #affiliation: Institute for Infocomm Research
+      #location: 1 Fusionopolis Way, Singapore 138632
+      #email: jschen
+      #refmark: 7
+      #separator: ','
+    #- name: Han, B. S.
+      #affiliation: Institute for Infocomm Research
+      #location: 1 Fusionopolis Way, Singapore 138632
+      #email: bshan
+      #refmark: 8
+      #separator: ' '
+
+authors_affiliation: Institute for Infocomm Research
+authors_location: 1 Fusionopolis Way, Singapore 138632
+authors_email_suffix: '\@i2r.a-star.edu.sg'
+
+#author_compiled_latex: 'Saputra V. Billy\thanks{Saputra V.B. is with Autonomous Vehicle Department, Institute for Infocomm Research (I2R), Agency for Science, Technology and Research (A*STAR),1 Fusionopolis Way, Singapore 138632 {\tt\small saputravb@i2r.a-star.edu.sg}}, Ravichandiran Balaji, and Wong C.Y. Anthony\thanks{Ravichandiran B. and Wong C.Y. Anthony are with Autonomous Vehicle Department, Institute for Infocomm Research (I2R), Agency for Science, Technology and Research (A*STAR),1 Fusionopolis Way, Singapore 138632. {\tt\small }}'
+author_compiled_latex: 'Saputra V. Billy, Ravichandiran Balaji, and Wong C.Y. Anthony\newline Autonomous Vehicle Department, Institute for Infocomm Research (I2R)\newline Agency for Science, Technology and Research (A*STAR),1 Fusionopolis Way, Singapore 138632\newline Corresponding author email: {\tt\small saputravb@i2r.a-star.edu.sg}}'
+
+keyword:
+      - automobiles
+      - feature extraction
+      - intelligent transportation systems
+      - mobile robots
+      - optical scanners
+      - path planning
+      - trajectory control
+      - autonomous service vehicle
+      - drive-by-wire system
+      - driverless car
+      - electronic car
+      - lane detection algorithm
+      - lane keeping assistant
+      - laser scanner
+      - map free lane following
+      - path planning
+      - vehicle trajectory
+      - Laser radar
+      - Mobile robots
+      - Path planning
+      - Roads
+      - Testing
+      - Vehicles
+      - Wheels
+
+graphics: yes
+numbersections: yes
+
+abstract: |
+   Robot human interactions have significant applications in dealing with day-to-day robot service. The paper presents methods for detecting human object and tracking them, so that a robot can follow the chosen human object. The sensor used is a low cost 2D laser scanner so preliminary analysis on the scan data is necessary to detect humans. We propose a tunable detection method so that detections can be adapted to different legs shape characteristic. The detection results is fed to a tracking algorithm based on two-layer Kalman Filter which tracks both leg and person. The filter can indicate specific human objects and their movement from the detection results. Experiments are conducted when the robot is stationary and when it is following certain person. We show that the method can work in both indoor and outdoor with the advantage of the low cost system.
+#   As the sensors and actuators for building an autonomous vehicle are getting increasingly affordable, both industry and research now could leverage on autonomous vehicle platform for various purposes. This paper presents a study of realizing a class of autonomous vehicle called Autonomous Service Vehicle (ASV) in the context of urban road navigation. The goal is to apply autonomous vehicle technology for human service oriented tasks.  The ASV design is made for general service vehicle and it is intended to be reusable in term of hardware and software infrastructure. Components of the ASV are presented and experimentation was conducted to validate and evaluate the ASV. Further directions and necessary customization are explained in order to adapt the ASV design for various projects. \citeauthor{7225765} [@7225765]
+
+#    Autonomous vehicle has benefited from robotics technology in the recent years due the maturity of the field and significant advances in its related technologies. As the sensors and actuators for building an autonomous vehicle are getting increasingly affordable, both industry and research now could leverage on autonomous vehicle platform for various purposes. This paper presents a study of realizing a class of autonomous vehicle called Autonomous Service Vehicle (ASV) in the context of urban road navigation. The goal is to apply autonomous vehicle technology for human service oriented tasks.  The ASV design is made for general service vehicle and it is intended to be reusable in term of hardware and software infrastructure. Components of the ASV are presented in a systematic manner in term of hardware, software and related development process. Experimentation was conducted to validate and evaluate the ASV. Finally, further directions and necessary customization are explained in order to adapt the ASV design for various projects. 
+   
+#    By the dawn of the new millennium, robotics has undergone a major transformation scope and dimensions. This expansion has been brought about by the maturity of field and the advances in its related technologies. From a largely dominant focus, robotics has been rapidly expanding into the challenges of the world. The recent technology development demonstrated how the fast growing progress toward the of new perception, control, and motion planning techniques allow autonomous vehicles not only to travel significant distances in off-road, but also to operate in urban scenarios. The expected impact in the commercial sector for automotive manufacturers is equally if not more: autonomous sensing and control constitute key technologies to vehicles the future that might help save thousands of lives now lost in traffic accidents.  Imagine a large field of vehicles without drivers traversing 60 miles in live, operating entirely without human guidance. A complex course including, traffic circles, and parking lots, defined by just kilobytes of data, several meters wide traveling down lanes only slightly wider, using systems with an accuracy of several meters. Humans in full-size unmanned vehicles at speeds up to 60 miles per hour. This actually would become reality in the near future.  This project aims to bring the recent development on autonomous driving technology into a more practical and marketable platform so that it benefits can really be advantageous to real users.
+
+# don't delete this line, bud
+...
+
+
