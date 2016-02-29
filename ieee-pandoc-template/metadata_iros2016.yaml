@@ -15,7 +15,7 @@ fontsize:
     - 10 pt
 
 
-title: 'Development of Human Tracking and Following for a Patrolling Robot'
+title: 'Human Tracking and Following in Dynamic Environment for Service Robots'
 #title: 'System Architecture for a Class of Small Service Vehicle'
 
 author:
@@ -56,13 +56,13 @@ author:
       email: tanbh
       refmark: 4
       #separator: "\\"
-      separator: " "
-    #- name: Jian, C.
-      #affiliation: Institute for Infocomm Research
-      #location: 1 Fusionopolis Way, Singapore 138632
-      #email: jschen
-      #refmark: 7
-      #separator: ','
+      separator: ","
+    - name: Chang, T.W.
+      affiliation: Institute for Infocomm Research
+      location: 1 Fusionopolis Way, Singapore 138632
+      email: changtw
+      refmark: 3
+      separator: ' '
     #- name: Han, B. S.
       #affiliation: Institute for Infocomm Research
       #location: 1 Fusionopolis Way, Singapore 138632
@@ -78,36 +78,17 @@ authors_email_suffix: '\@i2r.a-star.edu.sg'
 author_compiled_latex: 'Saputra V. Billy, Ravichandiran Balaji, and Wong C.Y. Anthony\newline Autonomous Vehicle Department, Institute for Infocomm Research (I2R)\newline Agency for Science, Technology and Research (A*STAR),1 Fusionopolis Way, Singapore 138632\newline Corresponding author email: {\tt\small saputravb@i2r.a-star.edu.sg}}'
 
 keyword:
-      - automobiles
       - feature extraction
-      - intelligent transportation systems
       - mobile robots
-      - optical scanners
-      - path planning
       - trajectory control
-      - autonomous service vehicle
-      - drive-by-wire system
-      - driverless car
-      - electronic car
-      - lane detection algorithm
-      - lane keeping assistant
       - laser scanner
-      - map free lane following
-      - path planning
-      - vehicle trajectory
-      - Laser radar
-      - Mobile robots
       - Path planning
-      - Roads
-      - Testing
-      - Vehicles
-      - Wheels
 
 graphics: yes
 numbersections: yes
 
 abstract: |
-   Robot human interactions have significant applications in dealing with day-to-day robot service. The paper presents methods for detecting human object and tracking them, so that a robot can follow the chosen human object. The sensor used is a low cost 2D laser scanner so preliminary analysis on the scan data is necessary to detect humans. We propose a tunable detection method so that detections can be adapted to different legs shape characteristic. The detection results is fed to a tracking algorithm based on two-layer Kalman Filter which tracks both leg and person. The filter can indicate specific human objects and their movement from the detection results. Experiments are conducted when the robot is stationary and when it is following certain person. We show that the method can work in both indoor and outdoor with the advantage of the low cost system.
+   Robot human interactions have significant applications in dealing with day-to-day robot service. The paper presents methods for detecting human object and tracking them, so that a robot can follow the chosen human object. The sensor used is a low cost 2D laser scanner so analysis on the scan data is necessary to detect humans. We propose a tunable detection method so that detections can be adapted to different legs shape characteristic. The detection results is fed to a tracking algorithm based on two-layer Kalman Filter which tracks both leg and person. The filter can indicate specific human objects and their movement from the detection results. Experiments are conducted when the robot is stationary and when it is following certain person. We show that the method can work in both indoor and outdoor with the advantage of the low cost of the system.
 #   As the sensors and actuators for building an autonomous vehicle are getting increasingly affordable, both industry and research now could leverage on autonomous vehicle platform for various purposes. This paper presents a study of realizing a class of autonomous vehicle called Autonomous Service Vehicle (ASV) in the context of urban road navigation. The goal is to apply autonomous vehicle technology for human service oriented tasks.  The ASV design is made for general service vehicle and it is intended to be reusable in term of hardware and software infrastructure. Components of the ASV are presented and experimentation was conducted to validate and evaluate the ASV. Further directions and necessary customization are explained in order to adapt the ASV design for various projects. \citeauthor{7225765} [@7225765]
 
 #    Autonomous vehicle has benefited from robotics technology in the recent years due the maturity of the field and significant advances in its related technologies. As the sensors and actuators for building an autonomous vehicle are getting increasingly affordable, both industry and research now could leverage on autonomous vehicle platform for various purposes. This paper presents a study of realizing a class of autonomous vehicle called Autonomous Service Vehicle (ASV) in the context of urban road navigation. The goal is to apply autonomous vehicle technology for human service oriented tasks.  The ASV design is made for general service vehicle and it is intended to be reusable in term of hardware and software infrastructure. Components of the ASV are presented in a systematic manner in term of hardware, software and related development process. Experimentation was conducted to validate and evaluate the ASV. Finally, further directions and necessary customization are explained in order to adapt the ASV design for various projects. 
