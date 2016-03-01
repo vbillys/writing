@@ -175,7 +175,7 @@ algorithm described in the next subsection.
 
 ## Leg and People Tracking
 
-In order to follow certain person, multiple target tracking is developed to estimate positions of both detected legs and people. The estimation is implemented using Kalman Filters (KFs) [@KalmanRudolfEmil] with two different motion model for legs and for people. In general, the state estimation of the legs and people can be modeled by a linear system, $\boldsymbol{\mathrm{x}}_{k+1}=\boldsymbol{A} \boldsymbol{\mathrm{x}}_k + \boldsymbol{\mathrm{w}}_k$. The process noise, $\boldsymbol{\mathrm{w}}_k$ is modelled as Gaussian white noise with covariance matrix $\boldsymbol{Q}$. The difference between the legs and people estimation is the matrix $\boldsymbol{A}$. The left superscripts $L$ and $P$, denote the entities for the linear systems correspond to legs and people state models (e.g. ${}^L\boldsymbol{A}$ and {}^P$\boldsymbol{A}$), respectively.  The input for the legs tracking are the leg detection results in each frame $k$. Furthermore, the input for the people tracking is the leg tracks states, treated as observations. This way the tracked people states can always be maintained, instead of creating temporary tracks in each update step [@ref7]. In every received data frame, all KFs tracks are updated. The result of the people tracking is transmitted to the pursuit controller (Sec. \ref{pursuit-controller}), so that the robot can follow certain person. The process can be summarized in Fig. \ref{fig_process_diagram}.
+In order to follow certain person, multiple target tracking is developed to estimate positions of both detected legs and people. The estimation is implemented using Kalman Filters (KFs) [@KalmanRudolfEmil] with two different motion model for legs and for people. In general, the state estimation of the legs and people can be modeled by a linear system, $\boldsymbol{\mathrm{x}}_{k+1}=\boldsymbol{A} \boldsymbol{\mathrm{x}}_k + \boldsymbol{\mathrm{w}}_k$. The process noise, $\boldsymbol{\mathrm{w}}_k$ is modelled as Gaussian white noise with covariance matrix $\boldsymbol{Q}$. The difference between the legs and people estimation is the matrix $\boldsymbol{A}$. The left superscripts $L$ and $P$, denote the entities for the linear systems correspond to legs and people state models (e.g. ${}^L\boldsymbol{A}$ and ${}^P\boldsymbol{A}$), respectively.  The input for the legs tracking are the leg detection results in each frame $k$. Furthermore, the input for the people tracking is the leg tracks states, treated as observations. This way the tracked people states can always be maintained, instead of creating temporary tracks in each update step [@ref7]. In every received data frame, all KFs tracks are updated. The result of the people tracking is transmitted to the pursuit controller (Sec. \ref{pursuit-controller}), so that the robot can follow certain person. The process can be summarized in Fig. \ref{fig_process_diagram}.
 
 \begin{figure}[!t]
 \centering
@@ -199,11 +199,11 @@ $$
 $$
 \end{IEEEeqnarray}
 
-where $\backsim$ and $\wedge$ denote the predicted and filtered quantities, $\boldsymbol{P}$ is the covariance matrix, $\boldsymbol{H}$ is the observation matrix relating the state to the observation, $\boldsymbol{I}$ is the identity matrix and $\boldsymbol{K}$ is the Kalman gain. The update steps requires associations between predicted state and current observation, which is solvable by employing Munkres algorithm [@munkresalgo]. The cost matrix for the assignment problem is computed using the Mahalanobis distance, so that the filter uncertainties is taken into account. This method is also known as Global Nearest Neighbor. However, a global gating threshold setting is employed so that association pairs that are too far away will be dropped. The data association has three interpretations: leg(s) that are uniquely associated with a track, the legs that cannot be associated with any of the existing track(s), and the track(s) that cannot be associated to any identified leg. Each track has also confidence level which is increased exponentially (with a constant $\alpha$ as a parameter) if there is evidence, and decreased, if there is not. The outcome of each interpretations are summarized in Table. \ref{table:leg_tracking_outcome}. The ${}^Lc^j_k$ and ${}^Ld^j_k$ are the confidence of a leg track and the identified leg confidence associated with the leg track, with index $j$ at time $k$, respectively.
+where $\backsim$ and $\wedge$ denote the predicted and filtered quantities, $\boldsymbol{P}$ is the covariance matrix, $\boldsymbol{H}$ is the observation matrix relating the state to the observation, $\boldsymbol{I}$ is the identity matrix and $\boldsymbol{K}$ is the Kalman gain. The update steps requires associations between predicted state and current observation, which is solvable by employing Munkres algorithm [@munkresalgo]. The cost matrix for the assignment problem is computed using the Mahalanobis distance, so that the filter uncertainties is taken into account. This method is also known as Global Nearest Neighbor. However, a global gating threshold setting is employed so that association pairs that are too far away will be dropped. The data association has three interpretations: leg(s) that are uniquely associated with a track, the legs that cannot be associated with any of the existing track(s), and the track(s) that cannot be associated to any identified leg. Each track has also confidence level which is increased exponentially (with a constant $\alpha$ as a parameter) if there is evidence, and decreased, if there is not. The track is removed if the confidence is below certain threshold. The outcome of the interpretations are summarized in Table. \ref{table:leg_tracking_outcome}. The ${}^Lc^j_k$ and ${}^Ld^j_k$ are the confidence of the leg track and the identified leg confidence associated with the leg track, with index $j$ at time $k$, respectively.
 
 \begin{table}[!t]
 \renewcommand{\arraystretch}{1.3}
-\caption{Possible outcomes for leg data association}
+\caption{Possible outcomes for leg tracking association}
 \label{table:leg_tracking_outcome}
 \centering
 \footnotesize
@@ -212,11 +212,11 @@ where $\backsim$ and $\wedge$ denote the predicted and filtered quantities, $\bo
     \textbf{Case} &
     \textbf{Outcome} \cr
   \hline\hline
-    Uniquely assigned leg-track pair & Update the corresponding KF state. Track confidence is updated, $c^j_k=\alpha \, {}^Lc^j_{k-1} + (1-\alpha) \, {}^Ld^j_{k}$\cr
+    Assigned track with leg observation & Update the corresponding KF state. Track confidence is updated, ${}^Lc^j_k=\alpha \, {}^Lc^j_{k-1} + (1-\alpha) \, {}^Ld^j_{k}$\cr
   \hline
-    Unassociated track(s) & Skip update, but propagate the track using the KF predict step. Track confidence is degraded, $c^j_k=\alpha \, {}^Lc^j_{k-1}$ \cr
+    Unassociated track & Skip update, but propagate the track using the KF predict step. Track confidence is degraded, ${}^Lc^j_k=\alpha \, {}^Lc^j_{k-1}$ \cr
   \hline
-    Unassociated leg(s) & Initiate a new track with zero velocity and confidence. \cr
+    Unassociated leg observation & Initiate a new track with zero velocity and zero confidence. \cr
   \hline
 \end{tabular}
 \end{table}
@@ -225,9 +225,30 @@ where $\backsim$ and $\wedge$ denote the predicted and filtered quantities, $\bo
 
 In order to track people, additional KFs are also created similarly with the formulation elaborated in the leg tracking method with the superscript indices $P$ and it is not included to save space. The differences lie on the motion model, observation model and how the data association is treated. People tracking maintains a set of people tracks, ${}^P\boldsymbol{X}_k=\lbrace {}^P\boldsymbol{\mathrm{x}}^1_k, {}^P\boldsymbol{\mathrm{x}}^2_k,\dotsb,{}^P\boldsymbol{\mathrm{x}}^{{}^PN_k}_k \rbrace$, where ${}^PN_k$ is the number of people track at time $k$. Each leg track has a state estimate ${}^P\boldsymbol{\mathrm{x}}^j_k=[ x \: y \: \dot{x} \: \dot{y} \: \ddot{x} \: \ddot{y} ]^T$ of a target position, velocity, and acceleration in a 2D Cartesian coordinate. The rationale behind the constant acceleration model for the people tracking is that humans have walking pattern that accelerates and decelerates periodically. The observation model takes the states of the legs tracks as measurements, ${}^P\boldsymbol{\mathrm{z}}^m_k={}^L\boldsymbol{\mathrm{x}}^m_k$, where $m=1 \dotsb {}^LN_k$. With this another layer of KF tracker, any spurious leg identification can be robustly filtered out.
 
-The people tracking observation model, ${}^P\boldsymbol{\mathrm{z}}_k={}^P\boldsymbol{H}{}^P\boldsymbol{\mathrm{x}}+\boldsymbol{\mathrm{v}}_k$ takes only position as measurement variable. Since the two legs of a person can be detected, the position is computed as the center of the two legs, otherwise it is the same as the position of the only leg detected. The people associations is solved using Munkres, but the observation targets are firstly categorized into three groups: the legs that has unambiguous nearest leg, the legs that has uncertain leg pair (because there are a few candidates nearby), and the legs that are located far enough to other legs. These groups are subsequently referred as the two-legs group, the ambiguous one-legs group, and the certain one-legs group. The grouping are determined based on simple search with a maximum distance between two-legs pair threshold parameter. The data association is solved using similar cost matrix method, however we found that for people tracking, real distance metric is more robust. This is possibly caused by the fact that the uncertainties of the KFs are not as accurate compared to the leg tracking, because the observation are virtual measurement (the state of the leg tracks). There are four interpretations of the people tracking association: two-legs group that are uniquely associated with a people track, two-legs group that are unassociated, the people track(s) that are paired with only one in the one-legs group, the people track(s) that are unpaired with any observation. The summary of the outcomes for these interpretations is shown in Table. \ref{table:people_tracking_outcome}.
+The people tracking observation model, ${}^P\boldsymbol{\mathrm{z}}_k={}^P\boldsymbol{H}{}^P\boldsymbol{\mathrm{x}}+\boldsymbol{\mathrm{v}}_k$ takes only position as measurement variable. Since the two legs of a person can be detected, the position is computed as the center of the two legs, otherwise it is the same as the position of the only leg detected. The people associations is solved using the Munkres algorithm, but the observation targets are firstly categorized into three groups: the legs that has unambiguous nearest leg, the legs that has uncertain leg pair (because there are a few candidates nearby), and the legs that are located far enough to other legs. These groups are subsequently referred as the two-legs group, the ambiguous one-legs group, and the certain one-legs group, respectively. The grouping are determined based on simple search with a maximum distance between two-legs pair threshold parameter. The data association is solved using similar cost matrix method, however we found that for people tracking, real distance metric is more robust. This is possibly caused by the fact that the uncertainties of the KFs are not as accurate compared to the leg tracking, because the observation are virtual measurement (the state of the leg tracks). There are four interpretations of the people tracking association: two-legs group that are uniquely associated with a people track, two-legs group that are unassociated, the people track(s) that are paired with only one in the one-legs group, the people track(s) that are unpaired with any observation. The summary of the outcomes for these interpretations is shown in Table. \ref{table:people_tracking_outcome}. People tracks carry additional confidence information derived from its observation from leg tracking data. The confidence is update in a similar manner as in the leg tracking, with a constant parameter $\beta$. Two-legs group confidence is computed by averaging its legs confidences, and a single confidence is derived when a people track is associated with the one-legs group. If associated with the uncertain one-legs group, people track confidence are not updated, i.e. maintain the same confidence value as it is deemed ambiguous. From our experiments, it is better to leave the confidence constant until a new observation improve the state. The track is removed if the confidence is below certain threshold. The ${}^Pc^j_k$ and ${}^Pd^j_k$ are the confidence of the people track and the confidence of the associated observation, with index $j$ at time $k$, respectively.
 
 
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.3}
+\caption{Possible outcomes for people tracking association}
+\label{table:people_tracking_outcome}
+\centering
+\footnotesize
+\begin{tabular}{p{1.5cm}||p{6.cm}}
+\hline
+\textbf{Case} &
+\textbf{Outcome} \cr
+\hline\hline
+Assigned people track with two-leg & Update the corresponding KF state. Track confidence is updated, ${}^Pc^j_k=\beta \, {}^Pc^j_{k-1} + (1-\beta) \, {}^Pd^j_{k}$\cr
+\hline
+Unassociated people track & Skip update, but propagate the track using the KF predict step. Track confidence is degraded, ${}^Pc^j_k=\beta \, {}^Pc^j_{k-1}$ \cr
+\hline
+Associated people track with one-leg & If the one-leg belongs to certain one-legs group, update the corresponding KF state and its confidence using the properties of the one-leg. \newline ,else if the one-leg is in the ambiguous group, the KF state is not updated, and the predict step is skipped for this track.\cr
+\hline
+Unassociated two-leg & Initiate a new track with zero velocity, zero acceleration and zero confidence. \cr
+\hline
+\end{tabular}
+\end{table}
 
 ## Pursuit Controller
 
