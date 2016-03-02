@@ -164,7 +164,7 @@ analysis.
 
 To analyze the single leg clusters, three criterions are used as
 benchmark. First, the mean error of the inscribe angle variant (IAV)
-of the cluster. The second is the error of the standard deviation
+of the cluster [@DBLP:conf/icra/XavierPCRN05]. The second is the error of the standard deviation
 of the cluster. The third is related to the error in the size of the
 cluster.
 
@@ -229,7 +229,7 @@ In order to follow certain person, multiple target tracking is developed to esti
 
 
 ### Legs Tracking
-The KF for the legs uses a constant velocity motion model with a pseudo velocity measurement during the KF update steps. At discrete time $k$, the KF maintains a set of leg tracks, ${}^L\boldsymbol{X}_k=\lbrace {}^L\boldsymbol{\mathrm{x}}^1_k, {}^L\boldsymbol{\mathrm{x}}^2_k,\dotsb,{}^L\boldsymbol{\mathrm{x}}^{{}^LN_k}_k \rbrace$, where ${}^LN_k$ is the number of leg track at time $k$. Each leg track has a state estimate ${}^L\boldsymbol{\mathrm{x}}^j_k=[ x \: y \: \dot{x} \: \dot{y} ]^T$ of a target position and velocity in a 2D Cartesian coordinate. During the update step of the Kalman Filter, leg identification are processed using an observation model, ${}^L\boldsymbol{\mathrm{z}}_k={}^L\boldsymbol{H}{}^L\boldsymbol{\mathrm{x}}_k + \boldsymbol{\mathrm{v}}_k$. The observation includes position and velocity observations with white noise, $\boldsymbol{\mathrm{v}}_k$ governed by a covariance matrix, ${}^L\boldsymbol{R}$. The pseudo velocity measurement is determined from estimation of the difference from current state (after update step) and the previous state, normalized by the time step. The velocity measurement is used since we found that data from the laser perception is accurate enough and helps to improve legs track accuracy. The predict and update cycle of the KF for every track can be summarized by the following equation. Note that the indices are not displayed in this equation to avoid clutter.
+The KF for the legs uses a constant velocity motion model with a pseudo velocity measurement during the KF update steps. At discrete time $k$, the KF maintains a set of leg tracks, ${}^L\boldsymbol{X}_k=\lbrace {}^L\boldsymbol{\mathrm{x}}^1_k, {}^L\boldsymbol{\mathrm{x}}^2_k,\dotsb,{}^L\boldsymbol{\mathrm{x}}^{{}^LN_k}_k \rbrace$, where ${}^LN_k$ is the number of leg track at time $k$. Each leg track has a state estimate ${}^L\boldsymbol{\mathrm{x}}^j_k=[ x \: y \: \dot{x} \: \dot{y} ]^T$ of a target position and velocity in a 2D Cartesian coordinate. During the update step of the Kalman Filter, leg identification are processed using an observation model, ${}^L\boldsymbol{\mathrm{z}}_k={}^L\boldsymbol{H}{}^L\boldsymbol{\mathrm{x}}_k + \boldsymbol{\mathrm{v}}_k$. The observation includes position and velocity observations with white noise, $\boldsymbol{\mathrm{v}}_k$ governed by a covariance matrix, ${}^L\boldsymbol{R}$. The pseudo velocity measurement is determined from estimation of the difference from current state (after update step) and the previous state, normalized by the time step. The velocity measurement is used since we found that data from the laser perception is accurate enough and helps to improve legs track accuracy. The predict and update cycle of the KF for every track can be summarized by the following equation. Note that the indices are omitted in this equation.
 
 \begin{IEEEeqnarray}{c}
 $$
@@ -329,7 +329,7 @@ indoor.
 
 The pursuit controller makes use of the target given by the tracker. Fig. \ref{fig_pursuit_controller} shows the variables used in the pursuit controller.
 First the coordinate of the target person is transformed into a
-polar coordinate with range $R_P$, and angle $\theta_{Bn}$ with
+polar coordinate with range $R_P$, and angle $\theta_{P}$ with
 respect to the robot heading. To determine the angle $\theta_{BP}$
 where the robot should go to pursuit the target, the zones
 surrounding the robot are first divided into $m$ number of
@@ -431,11 +431,12 @@ considerations are,
 
 \begin{figure*}[!t]
 \centering
-\subfloat[Case I]{\includegraphics[width=1.5in]{occluded.pdf}
+\subfloat[Single target tracking]{\includegraphics[height=3.0in]{occluded-cropped.pdf}
 \label{fig_static_result_one_people}}
-\subfloat[Case II]{\includegraphics[width=1.5in]{occluded2.pdf}
+\subfloat[Two targets tracking]{\includegraphics[height=3.0in]{occluded2.pdf}
 \label{fig_static_result_two_people}}
-\subfloat{\includegraphics[width=1.5in]{occluded2.pdf}}
+\hfil
+\subfloat{\includegraphics[width=1.2in]{legend.pdf}}
 \caption{Tracking results for stationary robot.}
 \label{fig_static_result}
 \end{figure*}
@@ -464,7 +465,7 @@ D_P =\hspace{-1mm} \left\{
 
 # Experimentation and Results
 
-The people detection and tracking algorithm is tested inside an office environment and followed by an outdoor testing where the ISERA robot follows certain person. A video is attached with the paper showing the dynamic following action of the robot. Prior to experiments, simulations were conducted to generate lidar data with some people walking around the robot. We use the publicly available simulation package V-REP [@vrep] that have a ready built-in Hokuyo laser scanner sensor models. The simulation environment verifies that the algorithm is at working state. The real experiments verified the results with real laser scanner data and control errors originated from tire slippage and robot motors.
+The people detection and tracking algorithm is tested inside an office environment and followed by an outdoor testing where the ISERA robot follows certain person. A video is attached with the paper showing the dynamic following action of the robot. Prior to experiments, simulations were conducted to generate lidar data with some people walking around the robot. The publicly available educational version simulation package V-REP [@vrep] which have a ready built-in Hokuyo laser scanner sensor models is used. The simulation environment verifies that the algorithm is at working state. The real experiments verified the results with real laser scanner data and control errors originated from tire slippage and robot motors.
 
 \begin{figure*}[!t]
 \centering
@@ -488,7 +489,7 @@ The first experiment is conducted while the robot is stationary. In this way, we
 
 ### Results
 
-Two similar test cases were carried out one with no occlusion, and the other one with other people walking around to emulate a cluttered environment. These cases are repeatedly tested with one primary target, and two primary targets, and the representative results can be depicted in Fig.\ref{fig_static_result_one_people} and Fig.\ref{fig_static_result_two_people} , respectively. As can be seen, the tracking was executed robustly even in the middle of cluttered objects. It is observed that during occlusions, target can sometime deviate from the ground truth due to temporary uncertainties in the filter. Likewise, with two targets the walking patterns was opposite: one target person starts from one end of the path, the other start from the other end. Note that by design, the algorithm should initiate a new target (in people tracking), only when two legs are observed. After that, it will keep tracking the target even though only one leg is observed. By keeping the confidence level in each track, we can maintain which target to be preserved for the next filter cycle. If a target cannot be identified for certain period, the confidence will be drastically degraded overtime, and it will be removed.
+Two similar test cases were carried out one with no occlusion, and the other one with other people walking around to emulate a cluttered environment. These cases are repeatedly tested with one primary target, and two primary targets, and the representative results can be depicted in Fig.\ref{fig_static_result_one_people} and Fig.\ref{fig_static_result_two_people} , respectively. As can be seen, the tracking was executed robustly even in the middle of cluttered objects and some spurious leg measurements. It is observed that during occlusions, target can sometime deviate from the ground truth due to temporary uncertainties in the filter. Likewise, with two targets the walking patterns was opposite: one target person starts from one end of the path, the other start from the other end. Note that by design, the algorithm should initiate a new target (in people tracking), only when two legs are observed. After that, it will keep tracking the target even though only one leg is observed. By keeping the confidence level in each track, we can maintain which target to be preserved for the next filter cycle. If a target cannot be identified for certain period, the confidence will be drastically degraded overtime, and it will be removed.
 
 <!--
 \begin{figure}[!t]
