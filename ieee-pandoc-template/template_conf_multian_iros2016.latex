@@ -180,6 +180,16 @@ $if(title)$
 \title{\LARGE \bf $title$}
 $endif$
 
+
+
+\ifCLASSOPTIONcompsoc
+\usepackage[caption=false,font=normalsize,labelfon
+t=sf,textfont=sf]{subfig}
+\else
+\usepackage[caption=false,font=footnotesize]{subfi
+g}
+\fi
+
 $if(author)$
 \author{
 	\IEEEauthorblockN{

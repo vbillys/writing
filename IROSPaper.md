@@ -4,10 +4,34 @@
 
 Recently, with increasing human-robot interaction applications, service robots have received more and more attentions. Mobile service robots designed to assist people in their daily lives, such as robotic butlers, robotic waiters and robotic pets, which once are the stuffs of since fictions, are becoming reality. In these robots, the capability to autonomously detect, track and follow a person has been regarded as an important functionality of the robotic systems. However, until now, it still remains a challenge that endowing this capability to these robots when they move in a cluttered environment.
 
-In previous studies, the approaches of autonomous person following can be classified as two categories: vision based and laser based. Due to the low cost, RGB-D cameras are widely adopted in the vision based approaches as the work presented in \cite{ref0}\cite{ref1}. However, the minimum distance requirement and the narrow field view of the RGB-D sensors limit the applications for following persons.
+In previous studies, the approaches of autonomous person following can be classified as two categories: vision based and laser based. Due to the low cost, RGB-D cameras are widely adopted in the vision based approaches as the work presented in [@ref0;@ref1]. However, the minimum distance requirement and the narrow field view of the RGB-D sensors limit the applications for following persons.
 
-The laser based approaches have an advantage in terms of large field of view and robustness on any lighting condition. \cite{ref3} may be the first to propose an approach for autonomous tracking people by using laser data. In this work, owing to the priori information of the operation environment, human is easy to be
-tracked by a mobile robot. In \cite{ref4}, leg detection in laser scans makes it possible for mobile robots detection and tracking both stationary and moving people. Based on \cite{ref4}, in the approach presented in \cite{ref5}, motion of the target people is modeled to enhance the tracking ability of an autonomous robot. To avoid the tediously manual tuning for determining the sizes of leg clusters in the laser scan, data-driven methods are employed in \cite{ref6} \cite{LuS13} to leaning shapes of leg clusters automatically. Nevertheless, enhancing the robust of the learning approaches for detecting and tacking moving people is still under research. More recently, \cite{ref7} introduces a framework for outdoor person tracking and following for a smart wheel chair robot by extending a trained legs detector from \cite{ref8}. In \cite{ref9}\cite{ref10}, robotic behaviors in relation to the speed and distance to the person being followed have been analyzed. However, the correlation from detecting legs into tracking a person, and the robustness when multiple person is around the person being followed has not been explored in these studies. In additional, few of researchers fuse the visual information and laser data for tracking people \cite{KobilarovSHB06}\cite{M.Kleinehagenbrock}\cite{ref2}, but this kind of scheme may complicate the tracking system.
+The laser based approaches have an advantage in terms of large field
+of view and robustness on any lighting condition. \cite{ref3} may be
+the first to propose an approach for autonomous tracking people by
+using laser data. In this work, owing to the priori information of
+the operation environment, human is easy to be tracked by a mobile
+robot. In \cite{ref4}, leg detection in laser scans makes it
+possible for mobile robots detection and tracking both stationary
+and moving people. Based on \cite{ref4}, in the approach presented
+in \cite{ref5}, motion of the target people is modeled to enhance
+the tracking ability of an autonomous robot. To avoid the tediously
+manual tuning for determining the sizes of leg clusters in the laser
+scan, data-driven methods are employed in [@ref6;@LuS13]
+to leaning shapes of leg clusters automatically. Nevertheless,
+   enhancing the robust of the learning approaches for detecting and
+   tacking moving people is still under research. More recently,
+   \cite{ref7} introduces a framework for outdoor person tracking and
+   following for a smart wheel chair robot by extending a trained legs
+   detector from \cite{ref8}. In [@ref9;@ref10], robotic
+   behaviors in relation to the speed and distance to the person being
+   followed have been analyzed. However, the correlation from detecting
+   legs into tracking a person, and the robustness when multiple person
+   is around the person being followed has not been explored in these
+   studies. Additionaly, few researchers fuse the visual information
+   and laser data for tracking people [@KobilarovSHB06;@M.Kleinehagenbrock;@ref2] 
+, but this
+   kind of scheme may complicate the tracking system.
 
 
 \begin{figure}[!t]
@@ -19,10 +43,27 @@ robot}\label{fig_isera}
 \end{figure}
 
 
-In this paper, we propose a novel approach to autonomously detect, track and follow persons for a service robot, namely ISERA shown in Fig. \ref{fig_isera}, in a cluttered environment. In this approach, a tuneable 2D leg detection method is developed to regulate the strictness of the leg identifier as needed. The proposed approach then tracks the leg clusters, and associate the data to form and track a virtual target
-person. Two layers of Kalman filter is used to ensure the robustness of the person tracking despite close proximity to another person and temporary line of sight loss to the leg clusters occurred. Another notable merit of the proposed approach is that a real time obstacle avoidance algorithm is embedded into the feed-back motion controller of the robot. Hence, experiments show ISERA can follow a target person while avoid obstacles autonomously in a cluttered environment.
+In this paper, we propose a novel approach to autonomously detect,
+track and follow persons for a service robot, namely ISERA shown in
+Fig. \ref{fig_isera}, in a dynamic environment. In this approach, a
+tuneable 2D leg detection method is developed to regulate the
+strictness of the leg identifier as needed. The proposed approach
+then tracks the leg clusters, and associate the data to form and
+track a virtual target person. Two layers of Kalman filter is used
+to ensure the robustness of the person tracking despite close
+proximity to another person and temporary line of sight loss to the
+leg clusters occurred. Another notable merit of the proposed
+approach is that a real time obstacle avoidance algorithm is
+embedded into the feed-back motion controller of the robot. Hence,
+experiments show ISERA can follow a target person while avoid
+obstacles autonomously in a cluttered environment.
 
-The paper is organized as follows. Section II describes the mobile robot system. The people detection, tracking and following approach is detailed in Section III. The experiment and results described in Section VI shows the valid and effective of the proposed approach. Finally, a conclusion is given in Section V.
+The paper is organized as follows. Section II describes the mobile
+robot system. The people detection, tracking and following approach
+is detailed in Section III. The experiment and results described in
+Section VI shows the validity and effectiveness of the proposed
+approach. Finally, a conclusion is given in Section V.
+
 
 
 
@@ -52,7 +93,7 @@ average adults.
 ## Leg Identification
 
 In this paper, we proposes a leg identification that build based on
-the principle of circle geometric fitting [Premebida 2005], but
+the principle of circle geometric fitting, but
 instead of giving a crisp output, our algorithm calculates the
 confidence of a segmented cluster to be considered as a leg. The
 confidence will then be used in the tracking algorithm to determine
@@ -123,7 +164,7 @@ analysis.
 
 To analyze the single leg clusters, three criterions are used as
 benchmark. First, the mean error of the inscribe angle variant (IAV)
-of the cluster []. The second is the error of the standard deviation
+of the cluster. The second is the error of the standard deviation
 of the cluster. The third is related to the error in the size of the
 cluster.
 
@@ -175,7 +216,8 @@ algorithm described in the next subsection.
 
 ## Leg and People Tracking
 
-In order to follow certain person, multiple target tracking is developed to estimate positions of both detected legs and people. The estimation is implemented using Kalman Filters (KFs) [@KalmanRudolfEmil] with two different motion model for legs and for people. In general, the state estimation of the legs and people can be modeled by a linear system, $\boldsymbol{\mathrm{x}}_{k+1}=\boldsymbol{A} \boldsymbol{\mathrm{x}}_k + \boldsymbol{\mathrm{w}}_k$. The process noise, $\boldsymbol{\mathrm{w}}_k$ is modelled as Gaussian white noise with covariance matrix $\boldsymbol{Q}$. The difference between the legs and people estimation is the matrix $\boldsymbol{A}$. The left superscripts $L$ and $P$, denote the entities for the linear systems correspond to legs and people state models (e.g. ${}^L\boldsymbol{A}$ and ${}^P\boldsymbol{A}$), respectively.  The input for the legs tracking are the leg detection results in each frame $k$. Furthermore, the input for the people tracking is the leg tracks states, treated as observations. This way the tracked people states can always be maintained, instead of creating temporary tracks in each update step [@ref7]. In every received data frame, all KFs tracks are updated. The result of the people tracking is transmitted to the pursuit controller (Sec. \ref{pursuit-controller}), so that the robot can follow certain person. The process can be summarized in Fig. \ref{fig_process_diagram}.
+
+In order to follow certain person, multiple target tracking is developed to estimate positions of both detected legs and people. The estimation is implemented using Kalman Filters (KFs) [@KalmanRudolfEmil] with two different motion model for legs and for people. In general, the state estimation of the legs and people can be modeled by a linear system, $\boldsymbol{\mathrm{x}}_{k+1}=\boldsymbol{A} \boldsymbol{\mathrm{x}}_k + \boldsymbol{\mathrm{w}}_k$. The process noise, $\boldsymbol{\mathrm{w}}_k$ is modelled as Gaussian white noise with covariance matrix $\boldsymbol{Q}$. The difference between the legs and people estimation is the matrix $\boldsymbol{A}$. The left superscripts $L$ and $P$, denote the entities for the linear systems correspond to legs and people state models (e.g. ${}^L\boldsymbol{A}$ and ${}^P\boldsymbol{A}$), respectively.  The input for the legs tracking are the leg detection results in each frame $k$. Furthermore, the input for the people tracking is the leg tracks states, treated as observations. In [@ref7], temporary people tracks are created in each update step. Although this approach could infer people directly from leg identification, but the movement of the people are not included in the consideration of the filter.  In our method, the KF in the people tracking maintains the state of the tracked people at all times. In every received data frame, all KFs tracks are updated. The result of the people tracking is transmitted to the pursuit controller (Sec. \ref{pursuit-controller}), so that the robot can follow certain person. The process can be summarized in Fig. \ref{fig_process_diagram}.
 
 \begin{figure}[!t]
 \centering
@@ -221,12 +263,36 @@ where $\backsim$ and $\wedge$ denote the predicted and filtered quantities, $\bo
 \end{tabular}
 \end{table}
 
+
+
+<!--
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.3}
+\caption{Possible outcomes for leg tracking association}
+\label{table:leg_tracking_outcome}
+\centering
+\footnotesize
+\begin{tabular}{p{1.5cm}||p{6.cm}}
+  \hline
+    \textbf{Case} &
+    \textbf{Outcome} \cr
+  \hline\hline
+    Uniquely assigned leg-track pair & Update the corresponding KF state. Track confidence is updated, ${}^Lc^j_k=\alpha \, {}^Lc^j_{k-1} + (1-\alpha) \, {}^Ld^j_{k}$\cr
+  \hline
+    Unassociated track(s) & Skip update, but propagate the track using the KF predict step. Track confidence is degraded, ${}^Lc^j_k=\alpha \, {}^Lc^j_{k-1}$ \cr
+  \hline
+    Unassociated leg(s) & Initiate a new track with zero velocity and confidence. \cr
+  \hline
+\end{tabular}
+\end{table}
+-->
+
+
 ### People Tracking
 
 In order to track people, additional KFs are also created similarly with the formulation elaborated in the leg tracking method with the superscript indices $P$ and it is not included to save space. The differences lie on the motion model, observation model and how the data association is treated. People tracking maintains a set of people tracks, ${}^P\boldsymbol{X}_k=\lbrace {}^P\boldsymbol{\mathrm{x}}^1_k, {}^P\boldsymbol{\mathrm{x}}^2_k,\dotsb,{}^P\boldsymbol{\mathrm{x}}^{{}^PN_k}_k \rbrace$, where ${}^PN_k$ is the number of people track at time $k$. Each leg track has a state estimate ${}^P\boldsymbol{\mathrm{x}}^j_k=[ x \: y \: \dot{x} \: \dot{y} \: \ddot{x} \: \ddot{y} ]^T$ of a target position, velocity, and acceleration in a 2D Cartesian coordinate. The rationale behind the constant acceleration model for the people tracking is that humans have walking pattern that accelerates and decelerates periodically. The observation model takes the states of the legs tracks as measurements, ${}^P\boldsymbol{\mathrm{z}}^m_k={}^L\boldsymbol{\mathrm{x}}^m_k$, where $m=1 \dotsb {}^LN_k$. With this another layer of KF tracker, any spurious leg identification can be robustly filtered out.
 
 The people tracking observation model, ${}^P\boldsymbol{\mathrm{z}}_k={}^P\boldsymbol{H}{}^P\boldsymbol{\mathrm{x}}+\boldsymbol{\mathrm{v}}_k$ takes only position as measurement variable. Since the two legs of a person can be detected, the position is computed as the center of the two legs, otherwise it is the same as the position of the only leg detected. The people associations is solved using the Munkres algorithm, but the observation targets are firstly categorized into three groups: the legs that has unambiguous nearest leg, the legs that has uncertain leg pair (because there are a few candidates nearby), and the legs that are located far enough to other legs. These groups are subsequently referred as the two-legs group, the ambiguous one-legs group, and the certain one-legs group, respectively. The grouping are determined based on simple search with a maximum distance between two-legs pair threshold parameter. The data association is solved using similar cost matrix method, however we found that for people tracking, real distance metric is more robust. This is possibly caused by the fact that the uncertainties of the KFs are not as accurate compared to the leg tracking, because the observation are virtual measurement (the state of the leg tracks). There are four interpretations of the people tracking association: two-legs group that are uniquely associated with a people track, two-legs group that are unassociated, the people track(s) that are paired with only one in the one-legs group, the people track(s) that are unpaired with any observation. The summary of the outcomes for these interpretations is shown in Table. \ref{table:people_tracking_outcome}. People tracks carry additional confidence information derived from its observation from leg tracking data. The confidence is update in a similar manner as in the leg tracking, with a constant parameter $\beta$. Two-legs group confidence is computed by averaging its legs confidences, and a single confidence is derived when a people track is associated with the one-legs group. If associated with the uncertain one-legs group, people track confidence are not updated, i.e. maintain the same confidence value as it is deemed ambiguous. From our experiments, it is better to leave the confidence constant until a new observation improve the state. The track is removed if the confidence is below certain threshold. The ${}^Pc^j_k$ and ${}^Pd^j_k$ are the confidence of the people track and the confidence of the associated observation, with index $j$ at time $k$, respectively.
-
 
 \begin{table}[!t]
 \renewcommand{\arraystretch}{1.3}
@@ -250,6 +316,8 @@ Unassociated two-leg & Initiate a new track with zero velocity, zero acceleratio
 \end{tabular}
 \end{table}
 
+
+
 ## Pursuit Controller
 
 Our controller drives ISERA while avoiding obstacles based on the
@@ -259,7 +327,7 @@ the pursue controller, the controller simply process its surrounding
 online. Hence, it could work on large outdoor areas as well as
 indoor.
 
-The pursuit controller makes use of the target given by the tracker.
+The pursuit controller makes use of the target given by the tracker. Fig. \ref{fig_pursuit_controller} shows the variables used in the pursuit controller.
 First the coordinate of the target person is transformed into a
 polar coordinate with range $R_P$, and angle $\theta_{Bn}$ with
 respect to the robot heading. To determine the angle $\theta_{BP}$
@@ -274,11 +342,11 @@ from obstacles.
 \begin{figure}[!t]
 \centering
 \includegraphics[width=3.5in]{PursuitIllustration.pdf}
-\caption{(a) Illustration of the discrete spatial zone into $m$
+\caption{Variables in the pursuit controller. (a) Illustration of the discrete spatial zone into $m$
 number of buckets (9 buckets for illustration purpose). Note that
 the nearest point to obstacle $C_{Bn}$ in bucket $n=\{1,...,m\}$ may
 vary up depending on the environment (b) The parameters used in the
-pursuit controller} \label{fig_stanley}
+pursuit controller} \label{fig_pursuit_controller}
 \end{figure}
 
 
@@ -354,10 +422,23 @@ is in front of the robot. For other cases, the velocity will be
 reduced proportionally.
 
 Another factor that has a significant impact on the robot behavior
-is the social zones of the person []. As a service robot, the robot
-is expected to behave in the manner that is socially acceptable. The
-closer the robot to the target person, the more gentle the motion
-should be. The control laws combining these considerations are,
+is the social zones of the person \cite{ref10}. As a service robot,
+the robot is expected to behave in the manner that is socially
+acceptable. The closer the robot to the target person, the more
+gentle the motion should be. The control laws combining these
+considerations are,
+
+
+\begin{figure*}[!t]
+\centering
+\subfloat[Case I]{\includegraphics[width=1.5in]{occluded.pdf}
+\label{fig_static_result_one_people}}
+\subfloat[Case II]{\includegraphics[width=1.5in]{occluded2.pdf}
+\label{fig_static_result_two_people}}
+\subfloat{\includegraphics[width=1.5in]{occluded2.pdf}}
+\caption{Tracking results for stationary robot.}
+\label{fig_static_result}
+\end{figure*}
 
 \begin{equation}
 v_P=\frac{C_{BP}}{K_o}\times\frac{\theta_m-\theta_P}{\theta_m}\times
@@ -383,21 +464,56 @@ D_P =\hspace{-1mm} \left\{
 
 # Experimentation and Results
 
+The people detection and tracking algorithm is tested inside an office environment and followed by an outdoor testing where the ISERA robot follows certain person. A video is attached with the paper showing the dynamic following action of the robot. Prior to experiments, simulations were conducted to generate lidar data with some people walking around the robot. We use the publicly available simulation package V-REP [@vrep] that have a ready built-in Hokuyo laser scanner sensor models. The simulation environment verifies that the algorithm is at working state. The real experiments verified the results with real laser scanner data and control errors originated from tire slippage and robot motors.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=6.5in]{Following.pdf}
+\caption{ISERA tracks and follows person A (wearing blue shirt),
+while person B (wearing black shirt) is passing in between:(a)
+Person B is about to pass through between person A and ISERA (b) For
+a few moments ISERA did not have line of sight of person A, and the
+tracker will start to decay. (c) ISERA regain line of sight and
+continued following person A} \label{fig:blocked}
+\vspace*{4pt}
+\end{figure*}
+
+
 ## People Detection and Tracking Experiment
 
 ### Procedure
 
+
+The first experiment is conducted while the robot is stationary. In this way, we can determine the ground truth by purposely walking in front of the robot and following a straight path along with marker on the floor. A single target tracking tests are coordinated with a person walking from one start point and an end point and repeat to the start point again in cycles. The purpose is to get the accuracy of the tracking result compared to the ground truth. Moreover, in a cluttered environment legs could be occluded by other people or obstacles. This condition is emulated by adding more people walking around while the primary target is still following the straight path. In order to verify multi-target tracking capability, tracking of two targets of interest were conducted. The paths are two straight lines located with a roughly $65cm$ distance to each other. To get the ground truth, prior to the experiments, two poles resembling an ideal human leg is placed at both ends of the paths so that from these end points the straight line can be determined.
+
 ### Results
+
+Two similar test cases were carried out one with no occlusion, and the other one with other people walking around to emulate a cluttered environment. These cases are repeatedly tested with one primary target, and two primary targets, and the representative results can be depicted in Fig.\ref{fig_static_result_one_people} and Fig.\ref{fig_static_result_two_people} , respectively. As can be seen, the tracking was executed robustly even in the middle of cluttered objects. It is observed that during occlusions, target can sometime deviate from the ground truth due to temporary uncertainties in the filter. Likewise, with two targets the walking patterns was opposite: one target person starts from one end of the path, the other start from the other end. Note that by design, the algorithm should initiate a new target (in people tracking), only when two legs are observed. After that, it will keep tracking the target even though only one leg is observed. By keeping the confidence level in each track, we can maintain which target to be preserved for the next filter cycle. If a target cannot be identified for certain period, the confidence will be drastically degraded overtime, and it will be removed.
+
+<!--
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{occluded.pdf}
+\caption{Tracking result for one target.}
+\label{fig_static_result_one_people}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{occluded2.pdf}
+\caption{Tracking result for two target.}
+\label{fig_static_result_two_people}
+\end{figure}
+-->
 
 
 ## People Following Experiment
 
 ### Procedure
+
 In order to validate that the proposed method could tracks and
 follows a person in a dynamic environment, we conducted a series of
-experiments in a large outdoor public area with obstacles. No
-mapping has been done for this environment prior to the experiment.
-
+experiments in a large outdoor public area with obstacles. 
 First, the target person is introduced to ISERA by standing in front
 of the robot, showing both legs, and tapping a button on the
 interface to initiate the tracking. Starting from this handshake
@@ -405,7 +521,6 @@ procedure, ISERA now tries to follow up to $30cm$ from the person.
 Besides normal procedure of steadily following the person, we also
 deliberately introduce some disturbance in the experiment by having
 people walking around and in between ISERA and its target person.
-
 
 ### Results
 We verified in our experiment results that ISERA consistently manage
@@ -416,32 +531,28 @@ following the person. When traveling between static obstacles, ISERA
 also avoided going to close to the obstacle, and successfully
 follows the person.
 
-There are two failure scenario related to the loss of line of sight
-that occurred during experiment. First scenario is when a person
-suddenly moved and deliberately blocked ISERA's path. Without
+There are two failure scenario related to prolong loss of line of
+sight that occurred during experiment. First scenario is when a
+person suddenly moved and deliberately blocked ISERA's path. Without
 sufficient time to react, the range became too close and the safety
 feature kicked in to completely stopped ISERA until the obstacle
 moved away. In theory, despite the disturbance and blockage by other
 persons, ISERA is able to regain the tracking as long as the target
 person tracker has not fully decayed (see Fig. \ref{fig:blocked}).
-Typically, the target person tracker could remain for a few seconds,
-depending of the confidence level when the line of sight is lost.
-The second scenario, ISERA lost track when the target person is
-turning sharply ($>90$ degree turn) over an obstacle, and if ISERA
-was lagging behind the obstacle, the line of sight was lost for too
-long due to the blockage and the target tracker faded away.
+Typically, the target person tracker is set to remain up to a few
+seconds, depending of the confidence level when the line of sight is
+lost. Our experiments also suggest that slowing down the decay rate
+so that the tracker will remain for a longer period when line of
+sight is lost is not a good idea, because the validity that
+the person being tracked is still the same person instead of someone
+else is undermined. The second scenario, ISERA lost track when the
+target person is turning sharply ($>90$ degree turn) over an
+obstacle, and if ISERA was lagging behind the obstacle, the line of
+sight was lost for too long due to the blockage and the target
+tracker faded away.
 
 
-\begin{figure}[!t]
-\centering
-\includegraphics[width=3.5in]{Following.pdf}
-\caption{ISERA tracks and follows person A (wearing blue shirt),
-while person B (wearing black shirt) is passing in between:(a)
-Person B is about to pass through between person A and ISERA (b) For
-a few moments ISERA did not have line of sight of person A, and the
-tracker will start to decay. (c) ISERA regain line of sight and
-continued following person A} \label{fig:blocked}
-\end{figure}
+
 
 
 
@@ -462,15 +573,13 @@ to follow a target person. Our leg identifier offers a flexibility
 of strictness in the criterion for different circumstances. The
 person tracker associate the leg to a person and tracks based on the
 confidence level that is given by the leg identifier. Lastly, our
-pursuit algorithm is independent of map, regulate the gentleness of
+pursuit algorithm could regulate the aggressiveness of
 the approach, and could be used to avoid obstacle while pursuing the
 target person.
 
 The work presented in this paper is a step towards a service robot
-that intelligently and politely follows a person in crowded public
-spaces. Such robot would have limitless potential application in the
-area of human service robotics.
-
+that intelligently and gently follows a person in crowded public
+spaces. 
 
 
 
