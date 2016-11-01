@@ -15,99 +15,88 @@ fontsize:
     - 10 pt
 
 
-title: 'Autonomous Service Vehicle Development for Urban Road Navigation'
+title: 'Indoor Robot Localization for Service Applications'
 #title: 'System Architecture for a Class of Small Service Vehicle'
 
 author:
     - name: Saputra, V. B.
-      affiliation: Institute for Infocomm Research
-      location: 1 Fusionopolis Way, Singapore 138632
-      email: saputravb
+      affiliation: International Intelligent Machines
+      location: Solaris, One-North,1 Fusionopolis Walk, Singapore 138628
+      email: billy
       refmark: 1
-      separator: ','
-    - name: Ravichandiran, B.
-      affiliation: Institute for Infocomm Research
-      location: 1 Fusionopolis Way, Singapore 138632
-      email: ravib
-      refmark: 2
-      separator: ','
-    #- name: Chan, S. M.
+      separator: ' ' #','
+    #- name: Ravichandiran, B.
       #affiliation: Institute for Infocomm Research
       #location: 1 Fusionopolis Way, Singapore 138632
-      #email: smchan
-      #refmark: 3
+      #email: ravib
+      #refmark: 2
       #separator: ','
-    #- name: Chia, H. Q.
-      #affiliation: Institute for Infocomm Research
-      #location: 1 Fusionopolis Way, Singapore 138632
-      #email: benjamin-chia
-      #refmark: 5
-      separator: ','
-    - name: Kumar Limbu, D.
-      affiliation: Institute for Infocomm Research
-      location: 1 Fusionopolis Way, Singapore 138632
-      email: dklimbu
-      refmark: 6
-      separator: ','
-      #separator: ' '
-    - name: Wong, C. Y.
-      affiliation: Institute for Infocomm Research
-      location: 1 Fusionopolis Way, Singapore 138632
-      email: cywong
-      refmark: 4
-      #separator: "\\"
-      separator: " "
-    #- name: Jian, C.
-      #affiliation: Institute for Infocomm Research
-      #location: 1 Fusionopolis Way, Singapore 138632
-      #email: jschen
-      #refmark: 7
+    ##- name: Chan, S. M.
+      ##affiliation: Institute for Infocomm Research
+      ##location: 1 Fusionopolis Way, Singapore 138632
+      ##email: smchan
+      ##refmark: 3
+      ##separator: ','
+    ##- name: Chia, H. Q.
+      ##affiliation: Institute for Infocomm Research
+      ##location: 1 Fusionopolis Way, Singapore 138632
+      ##email: benjamin-chia
+      ##refmark: 5
       #separator: ','
-    #- name: Han, B. S.
+    #- name: Kumar Limbu, D.
       #affiliation: Institute for Infocomm Research
       #location: 1 Fusionopolis Way, Singapore 138632
-      #email: bshan
-      #refmark: 8
-      #separator: ' '
+      #email: dklimbu
+      #refmark: 6
+      #separator: ','
+      ##separator: ' '
+    #- name: Wong, C. Y.
+      #affiliation: Institute for Infocomm Research
+      #location: 1 Fusionopolis Way, Singapore 138632
+      #email: cywong
+      #refmark: 4
+      ##separator: "\\"
+      #separator: " "
+    ##- name: Jian, C.
+      ##affiliation: Institute for Infocomm Research
+      ##location: 1 Fusionopolis Way, Singapore 138632
+      ##email: jschen
+      ##refmark: 7
+      ##separator: ','
+    ##- name: Han, B. S.
+      ##affiliation: Institute for Infocomm Research
+      ##location: 1 Fusionopolis Way, Singapore 138632
+      ##email: bshan
+      ##refmark: 8
+      ##separator: ' '
 
-authors_affiliation: Institute for Infocomm Research
-authors_location: 1 Fusionopolis Way, Singapore 138632
-authors_email_suffix: '\@i2r.a-star.edu.sg'
+authors_affiliation: International Intelligent Machines
+#authors_location: 1 Fusionopolis Way, Singapore 138632
+authors_location: Solaris, One-North,1 Fusionopolis Walk, Singapore 138628
+authors_email_suffix: '\@iim.ltd' #'\@i2r.a-star.edu.sg'
 
 #author_compiled_latex: 'Saputra V. Billy\thanks{Saputra V.B. is with Autonomous Vehicle Department, Institute for Infocomm Research (I2R), Agency for Science, Technology and Research (A*STAR),1 Fusionopolis Way, Singapore 138632 {\tt\small saputravb@i2r.a-star.edu.sg}}, Ravichandiran Balaji, and Wong C.Y. Anthony\thanks{Ravichandiran B. and Wong C.Y. Anthony are with Autonomous Vehicle Department, Institute for Infocomm Research (I2R), Agency for Science, Technology and Research (A*STAR),1 Fusionopolis Way, Singapore 138632. {\tt\small }}'
 author_compiled_latex: 'Saputra V. Billy, Ravichandiran Balaji, and Wong C.Y. Anthony\newline Autonomous Vehicle Department, Institute for Infocomm Research (I2R)\newline Agency for Science, Technology and Research (A*STAR),1 Fusionopolis Way, Singapore 138632\newline Corresponding author email: {\tt\small saputravb@i2r.a-star.edu.sg}}'
 
 keyword:
-      - automobiles
       - feature extraction
-      - intelligent transportation systems
       - mobile robots
       - optical scanners
       - path planning
       - trajectory control
-      - autonomous service vehicle
-      - drive-by-wire system
+      - autonomous service robots
       - driverless car
-      - electronic car
-      - lane detection algorithm
-      - lane keeping assistant
       - laser scanner
-      - map free lane following
-      - path planning
-      - vehicle trajectory
+      - robot trajectory
       - Laser radar
       - Mobile robots
       - Path planning
-      - Roads
-      - Testing
-      - Vehicles
-      - Wheels
 
 graphics: yes
 numbersections: yes
 
 abstract: |
-   As the sensors and actuators for building an autonomous vehicle are getting increasingly affordable, both industry and research now could leverage on autonomous vehicle platform for various purposes. This paper presents a study of realizing a class of autonomous vehicle called Autonomous Service Vehicle (ASV) in the context of urban road navigation. The goal is to apply autonomous vehicle technology for human service oriented tasks.  The ASV design is made for general service vehicle and it is intended to be reusable in term of hardware and software infrastructure. Components of the ASV are presented and experimentation was conducted to validate and evaluate the ASV. Further directions and necessary customization are explained in order to adapt the ASV design for various projects. 
+   As the sensors and actuators for building an autonomous robots are getting increasingly affordable, both industry and research now could leverage on robotic platform for various purposes. This patent presents an implementation of Indoor Robot Localization (IRL) which is a crucial component of realizing a class of robots vehicle called Autonomous Service Robots (ASR) in the context of human service applications. The goal is to apply signal processing technology in robotic system for human service oriented tasks.  The IRL design is made for general service robots and it is intended to be reusable in term of hardware and software infrastructure. 
 
 #    Autonomous vehicle has benefited from robotics technology in the recent years due the maturity of the field and significant advances in its related technologies. As the sensors and actuators for building an autonomous vehicle are getting increasingly affordable, both industry and research now could leverage on autonomous vehicle platform for various purposes. This paper presents a study of realizing a class of autonomous vehicle called Autonomous Service Vehicle (ASV) in the context of urban road navigation. The goal is to apply autonomous vehicle technology for human service oriented tasks.  The ASV design is made for general service vehicle and it is intended to be reusable in term of hardware and software infrastructure. Components of the ASV are presented in a systematic manner in term of hardware, software and related development process. Experimentation was conducted to validate and evaluate the ASV. Finally, further directions and necessary customization are explained in order to adapt the ASV design for various projects. 
    
