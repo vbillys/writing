@@ -18,7 +18,7 @@ In this paper, we propose an approach to autonomously classify, track and follow
 
 Another notable merit of the proposed approach is that a real time obstacle avoidance algorithm is embedded into the feed-back motion controller of the robot. Hence, experiments show ISERA can follow a target person while avoid obstacles autonomously in a cluttered environment.
 
-The paper is organized as follows. Section II describes the mobile robot system. The people detection, tracking and following approach is detailed in Section III. The experiment and results described in Section VI shows the validity and effectiveness of the proposed approach. Finally, a conclusion is given in Section V.
+The paper is organized as follows. Section II describes the mobile robot system. The people detection, tracking and following approach is detailed in Section III. The experiment and results are described in Section VI. Finally, a conclusion is given in Section V.
 
 # System Description
 
@@ -28,7 +28,7 @@ The ISERA robot is designed as a human friendly service robot that could serve a
 
 ## Leg Identification
 
-In this paper, we proposes a leg identification that build based on the principle of circle geometric fitting, but instead of giving a crisp output, our algorithm calculates the confidence of a segmented cluster to be considered as a leg. The confidence will then be used in the tracking algorithm to determine the decay rate of the tracker. Another addition is the algorithm could also identify a joint dual leg, where the two legs of a person standing could be very close to each other and seen as one large cluster by the sensor.
+A leg identification that build based on the principle of circle geometric fitting is proposed. Instead of giving a crisp output, our algorithm calculates the confidence of a segmented cluster to be considered as a leg. The confidence will then be used in the tracking algorithm to determine the decay rate of the tracker. Another addition is the algorithm could also identify a joint dual leg, where the two legs of a person standing could be very close to each other and seen as one large cluster by the sensor.
 
 ### Leg Segmentation
 
