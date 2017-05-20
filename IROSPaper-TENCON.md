@@ -22,7 +22,7 @@ The paper is organized as follows. Section II describes the mobile robot system.
 
 # System Description
 
-The ISERA robot is designed as a human friendly service robot that could serve as a butler or courier in public area. ISERA is built on the top of a differential drive mobile platform with a maximum speed of $1m/s$. A master PC is installed inside the robot for various algorithms implementation such as 2D mapping, autonomous navigation, human tracking and human robot interaction. ISERA used a Hokuyo UTM-30-LX lidar and the odometry information for the work proposed in this paper. The lidar is mounted about $30cm$ from the ground, which corresponds to sensor reading of legs below the knee, around the shank area of average adults.
+The ISERA robot is designed as a human friendly service robot that could serve as a butler or courier in public area. ISERA is built on the top of a differential drive mobile platform with a maximum speed of $1m/s$. A PC is installed inside the robot for processing and a Hokuyo UTM-30-LX lidar is mounted about $30cm$ from the ground, which corresponds to sensor reading of legs below the knee, around the shank area of average adults.
 
 # Person Following
 
