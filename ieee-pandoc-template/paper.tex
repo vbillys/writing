@@ -235,12 +235,12 @@ this case service vehicles, the autonomous vehicle can be utilized for
 automation of human service oriented tasks, such as automated road
 cleaning, grass cutting and leaves sucking machine. This is supported by
 the growth of service robotics industry in the recent years
-\citep{SVR_Nov_15}. \citeauthor{7225673} \citep{7225673} introduced
+\citep{SVR_Nov_15}. \citeauthor{7225673} {[}@7225673{]} introduced
 mobile service robot for electrical power plant inspection. This in turn
 could reduce or replace human involvement in manual inspection process.
-\citeauthor{6629559} \citep{6629559} presented an autonomous driving car
+\citeauthor{6629559} {[}@6629559{]} presented an autonomous driving car
 for research purposes that includes features that allows for urban road
-navigation. Similarly, \citeauthor{7225765} \citep{7225765} introduced a
+navigation. Similarly, \citeauthor{7225765} {[}@7225765{]} introduced a
 more advanced autonomous driving platform consisting of high performance
 cameras, LIDARs, and other navigation sensors. While these platforms are
 very attractive in term of their capability of handling big streams of
@@ -255,10 +255,10 @@ and affordable way to install a Drive-By-Wire (DBW) system into existing
 vehicle rather than to entirely build a new one. It was also studied
 that automation driver's task has positive impact to improving driving
 safety \citep{stanton1996fly}. Various effort to assist drivers has lead
-to development of ADAS system \citep{6232125, 7225760}. A DBW enables
+to development of ADAS system {[}@6232125;@7225760{]}. A DBW enables
 computerized control of the vehicle by means of replacing human drivers
 with actuators, which are usually driven by electrical motors
-\citep{1035218}. The ASV presented in this paper is retrofitted from a
+{[}@1035218{]}. The ASV presented in this paper is retrofitted from a
 compact electric vehicle \citep{SongZW_IV_2015}, and thus we studied the
 feasibility of converting this class of vehicles into service vehicles.
 
@@ -316,7 +316,7 @@ of robotics.
 As opposed to indoor localization, the environment where ASV usually
 deployed is outdoor and GPS data is available. However, it is studied
 that GPS data is often contain errors that is too large for autonomous
-navigation \citep{6629559}. One approach to compensate the error is to
+navigation {[}@6629559{]}. One approach to compensate the error is to
 use local lane marker or road boundary information to adjust lateral
 position of the vehicle with respect to the road \citep{loc_Boss}. This
 allow the vehicle control to always offset the vehicle position to
@@ -328,7 +328,7 @@ accurately as the ASV often need to stop at specific point in its route.
 We developed a hybrid approach that fuses both information from GPS and
 a prior map based online localization. The method is based on Particle
 Filter or sequential Bayes filter that involves prediction from vehicle
-motion model and measurement update cycle \citep{6550131}. The
+motion model and measurement update cycle {[}@6550131{]}. The
 measurement update computed from GPS and the feature scan matching. This
 approach is suitable for service applications because the size of the
 map is ranging from small to medium scale up to a few kilometer squares.
@@ -353,33 +353,33 @@ localization can be shown in Fig. \ref{fig_localize}.
 
 During operation of the ASV, obstacle obstructing or near the vehicle
 should be considered. Thus, by using a laser range sensor model for
-detection, a set \(L\) of \(n\) points which each has a range \(r_{i}\)
-and a angle \(\alpha_{i}\), measured from laser beams
-\(L=\left\{(r_{1},\alpha_{1}),...,(r_{n},\alpha_{n})\right\}\) are
+detection, a set $L$ of $n$ points which each has a range $r_{i}$ and a
+angle $\alpha_{i}$, measured from laser beams
+$L=\left\{(r_{1},\alpha_{1}),...,(r_{n},\alpha_{n})\right\}$ are
 clustered to extract objects \citep{Juric-Kavelj2008_407}. A Gaussian
 smoothing is applied to remove spurious noise before processing. Two
 subsequent points belong to one cluster satisfies the distance threshold
-\(d(r_{i},r_{i+1}) \leq D_{0}+D_{1}min(r_{i},r_{i+1})\), where \(D_{0}\)
-is the accuracy of the range data.
-\(D_{1} = \frac{3}{2}(\alpha_{i+1}-\alpha_{i})\) is a constant that
+$d(r_{i},r_{i+1}) \leq D_{0}+D_{1}min(r_{i},r_{i+1})$, where $D_{0}$ is
+the accuracy of the range data.
+$D_{1} = \frac{3}{2}(\alpha_{i+1}-\alpha_{i})$ is a constant that
 determine maximum change allowed. Point that break the threshold will be
 the start of another cluster. Processed laser scanner is represented by
-a set of clusters \(\left\{ C_{1},...,C_{m} \right\}\). Each cluster
+a set of clusters $\left\{ C_{1},...,C_{m} \right\}$. Each cluster
 consists of tuples
-\(({}^{C}r_{i},{}^{C}\alpha_{i},{}^{C}x_{i},{}^{C}y_{i})\) where
-\({}^{C}x_{i}\), \({}^{C}y_{i}\) are the Cartesian coordinate
+$({}^{C}r_{i},{}^{C}\alpha_{i},{}^{C}x_{i},{}^{C}y_{i})$ where
+${}^{C}x_{i}$, ${}^{C}y_{i}$ are the Cartesian coordinate
 representations.
 
 Each cluster is a potentially detected object. Based on the lateral
 proximity of each cluster, object boundaries are found by determining if
-each cluster satisfies \(w_{min} \leq d(y_{min},y_{max}) \leq w_{max}\),
-where \(w_{max}\) and \(w_{min}\) depend on widths of object of
-interest. The detected obstacles are sent the path planner to aid in
-calculation of the navigation course. Moreover, obstacle detection
-improves false recognition removal of map objects for localization
-\citep{5164269}. The cluster points of detected objects are used to
-determine areas of where measured points should be excluded from the
-localization and mapping process.
+each cluster satisfies $w_{min} \leq d(y_{min},y_{max})  \leq w_{max}$,
+where $w_{max}$ and $w_{min}$ depend on widths of object of interest.
+The detected obstacles are sent the path planner to aid in calculation
+of the navigation course. Moreover, obstacle detection improves false
+recognition removal of map objects for localization {[}@5164269{]}. The
+cluster points of detected objects are used to determine areas of where
+measured points should be excluded from the localization and mapping
+process.
 
 \subsection{Path Planning}\label{path-planning}
 
@@ -392,7 +392,7 @@ implemented in two stages: Global Path Planning and Local Path Planning.
 Global path planning aims to generate the waypoints to connect the
 destination and the start point. In the literature, global path planning
 can be achieved by the notable path planning algorithm such
-\(A^{*}\)\citep{hart1968formal}, \(D^{*}\)\citep{stentz1994optimal},
+$A^{*}$\citep{hart1968formal}, $D^{*}$\citep{stentz1994optimal},
 Rapidly-Exploring Random Trees\citep{lavalle1998rapidly}, Probabilistic
 roadmaps\citep{kavraki1996probabilistic}. For the ASV, a teach and
 repeat solution is prefered as the planned path rarely change. This
@@ -541,9 +541,9 @@ PID controller is given in the following:
 GB = k_p{E} + k_{i}\int_{0}^{t}{E}\,{dt} + k_{d}\frac{dE}{dt}
 \end{equation}
 
-Where \(GB\) is gas-brake position value, \(E\) is the velocity error,
-\(dE\) is the differential error, \(k_p\) is the proportional gain,
-\(k_i\) is the integral gain, \(k_d\) is the differential gain.
+Where $GB$ is gas-brake position value, $E$ is the velocity error, $dE$
+is the differential error, $k_p$ is the proportional gain, $k_i$ is the
+integral gain, $k_d$ is the differential gain.
 
 \begin{figure}[!t]
 \centering
@@ -562,30 +562,29 @@ approach used by Stanford university's autonomous vehicle during DARPA
 grand challenge 2006. The closed-loop geometric tracking controller
 helps vehicle to follow the desired path generated by local path
 planning. The controller is based on non-linear cross track error
-\(C_{e}\) and heading error \(\theta_{e}\). Cross track error is the
-lateral distance between front axle center point \((P_{x}, P_{y})\) and
-closest reference point \((R_{x}, R_{y})\) for which exponential can be
-shown \citep{ventures2006stanley}. This term helps the vehicle to steer
-towards the path to yield \(C_{e}\) as zero when its following the path.
-The heading error \(\theta_{e}\) is calculated by difference in vehicle
-heading \(\theta\) and reference heading \(\theta_{r}\) of path at
-\((R_{x}, R_{y})\). This error term directly applies to steering angle
-\(\delta\) with some steering angle limitation.
+$C_{e}$ and heading error $\theta_{e}$. Cross track error is the lateral
+distance between front axle center point $(P_{x}, P_{y})$ and closest
+reference point $(R_{x}, R_{y})$ for which exponential can be shown
+\citep{ventures2006stanley}. This term helps the vehicle to steer
+towards the path to yield $C_{e}$ as zero when its following the path.
+The heading error $\theta_{e}$ is calculated by difference in vehicle
+heading $\theta$ and reference heading $\theta_{r}$ of path at
+$(R_{x}, R_{y})$. This error term directly applies to steering angle
+$\delta$ with some steering angle limitation.
 
 \begin{equation}
 \label{eqn_heading_error}
 \theta_{e} = \theta - \theta_{r}
 \end{equation}
 
-When the cross track error \(C_{e}\) is non-zero, it adjusts \(\delta\)
-such that the intended trajectory intersects the reference path tangent
-from \((R_{x}, R_{y})\) at velocity in time \(V_{t}\) units from the
-front axle center point \((P_{x}, P_{y})\). The resulting steering
-control law by combining the two terms are shown in
-(\ref{eqn_stanley_equation}). \(k_{h}\) and \(k_{c}\) are the gain
-constants for heading error and cross error, respectively. Fig.
-\ref{fig_stanley} illustrates the geometric relationship of control
-parameters.
+When the cross track error $C_{e}$ is non-zero, it adjusts $\delta$ such
+that the intended trajectory intersects the reference path tangent from
+$(R_{x}, R_{y})$ at velocity in time $V_{t}$ units from the front axle
+center point $(P_{x}, P_{y})$. The resulting steering control law by
+combining the two terms are shown in (\ref{eqn_stanley_equation}).
+$k_{h}$ and $k_{c}$ are the gain constants for heading error and cross
+error, respectively. Fig. \ref{fig_stanley} illustrates the geometric
+relationship of control parameters.
 
 \begin{equation}
 \label{eqn_stanley_equation}
@@ -767,8 +766,8 @@ are installed such as shown in Fig. \ref{fig_power}. There are multiple
 redundancies power line to secure fail-safe and fault-tolerant operation
 of the ASV during its navigation. In addition, VI unit is made of
 multiple stack of microcontroller and relay boards in order to ensure
-safe interfacing to/from the vehicle. Fans are installed to provide
-regulate temperature inside the box.
+safe interfacing to/from the vehicle. Fans are installed to regulate
+temperature inside the box.
 
 \subsubsection{Sensors}\label{sensors}
 
@@ -782,8 +781,8 @@ over time. Pure odometry position is not recommended for long-term
 navigation, since the motion sensor error will accumulate drift in the
 actual position over time. The navigation relies on the localization
 module to fuse odometry data with GPS data and the developed map based
-localization. The odometry position is derived from the equation
-\ref{eqn_simple_odometry}. The following two motion sensors are
+localization. The odometry position is derived from the
+(\ref{eqn_simple_odometry}). The following two motion sensors are
 installed in the ASV: a wheel motion sensor (Kistler Wheel Pulse
 Transducers) to calculate vehicle travelled distance, and GPS/IMU sensor
 (Xsens MTi-G-700 GPS) to measure global positions and heading rate.
@@ -797,10 +796,10 @@ y_t = y_{t-1} + (\Delta v_t + sin(\theta_t))
 \end{split}
 \end{equation}
 
-where \(\Delta\theta\) is the yaw rate obtained from IMU, \(\theta\) is
-the heading, \(\Delta v\) is distance obtained from wheel motion sensor,
-\(x\) and \(y\) are the Cartesian coordinates of the odometry position,
-and \(t\) is the time index which is increased every sampling time.
+where $\Delta\theta$ is the yaw rate obtained from IMU, $\theta$ is the
+heading, $\Delta v$ is distance obtained from wheel motion sensor, $x$
+and $y$ are the Cartesian coordinates of the odometry position, and $t$
+is the time index which is increased every sampling time.
 
 \paragraph{Laser Range Sensors}\label{laser-range-sensors}
 
@@ -808,7 +807,7 @@ LIDAR ( Light Detection and Ranging) is one of the popular light range
 sensors used in various field of Robotics, Autonomous Vehicles, and
 Geo-mapping, forestry, etc. LIDAR will provide the distance of the
 object by emitting laser towards it and analysing its reflection.
-Compared to stereo vision systems \citep{6856563}, LIDARs generally has
+Compared to stereo vision systems {[}@6856563{]}, LIDARs generally has
 more field of view, longer detection range, and more accurate depth
 information. A four layers Lidar (Ibeo ScaLa) is mounted on front bumper
 facing forward for obstacle detection up to 100 meters. The obstacle
@@ -818,7 +817,7 @@ more layers can hit the ground or the free space below or above an
 object, respectively. At least one layer will detect an object if there
 is one. Another 16 layers Lidar (Velodyne Puck) which can sense
 surrounding object and environment shape in 25m radius is used mainly
-for localization. This LIDAR is mounted roughly \(30^{\circ}\) towards
+for localization. This LIDAR is mounted roughly $30^{\circ}$ towards
 ground purposely for detecting main features of the environment such as
 the road curbs and the tree trunks which are used for localization.
 
@@ -915,8 +914,8 @@ onto the ASV. These sensors and actuators are collectively called as a
 workload. The ASV modules are customizable to carry the workload and
 perform the desired service task. The ASV localize itself by using
 information from map and GPS, thus eliminating the need for installing
-environmental guidance such as RFID \citep{7225673} or magnetic rails
-\citep{5354591}. For inspection and surveillance purposes, the camera
+environmental guidance such as RFID {[}@7225673{]} or magnetic rails
+{[}@5354591{]}. For inspection and surveillance purposes, the camera
 data can be streamed and recorded via the HMI. For cleaning service, the
 ASV perform its task during its movement. This necessitates that the
 path planning follows certain objects, such as road pavement or curb.
@@ -924,7 +923,7 @@ Combined with the method proposed in \citep{SongZW_IV_2015}, the ASV can
 navigate to track arbitrary distinguishable object boundaries to conduct
 the cleaning. Nevertheless, thanks to the developed localization,
 arbitrary path rerouting is also possible. For services that require
-following certain moving object such as pedestrian \citep{7139259}, the
+following certain moving object such as pedestrian {[}@7139259{]}, the
 LIDAR and camera sensors could be used to track the object.
 Subsequently, the tracked object positions will become the destination
 points for the ASV path planner.
@@ -947,17 +946,6 @@ enabling possibilities of efficiently retrofitting compact vehicles or
 existing service machines into ASVs. This full embedded implementation
 and more experiments on study to deal with specific services will be
 conducted and reported in the future.
-
-\section*{Acknowledgments}\label{acknowledgments}
-\addcontentsline{toc}{section}{Acknowledgments}
-
-Thanks the Autonomous Vehicle Department in Institute for Infocomm
-Research for the accomplishment of successful demonstrations within a
-short development time. The conception of human service applications
-stemmed from this endeavor has lead to the publication of this paper.
-The project was supported by the Exploit Technologies Private Limited
-(ETPL) of the Agency for Science, Technology and Research (A*STAR) of
-Singapore.
 
 \small
 
