@@ -240,7 +240,7 @@ D_P =\hspace{-1mm} \left\{
 
 # Experimentation and Results
 
-The people detection, tracking, and pursuit algorithm has been tested both indoor and outdoor. In the experiment presented in this paper, ISERA 2D Lidar on board has $180$ degree towards the front of the robot, which gives $720$ sampling points with $0.25$ degree separating each point. The observation of clusters for leg detection is limited to be within $5$ meters. Cluster size is limited to be within $0.07m - 0.2m$ and consist more than 4 sampling points. Clusters would be classified as legs if the confidence exceed a cut off threshold of $0.5$.For the pursuit controller, the area in front of the robot are divided into $72$ bucket zones. 
+The people detection, tracking, and pursuit algorithm has been tested both indoor and outdoor. The 2D Lidar has $180$ degree towards the front of the robot, which gives $720$ sampling points with $0.25$ degree separating each point. The observation of clusters for leg detection is limited to be within $5$ meters. Cluster size is limited to be within $0.07m - 0.2m$ and consist more than 4 sampling points. Clusters would be classified as legs if the confidence exceed a cut off threshold of $0.5$. For the pursuit controller, the area in front of the robot are divided into $72$ bucket zones. 
 
 \begin{figure*}[!t]
 \centering
