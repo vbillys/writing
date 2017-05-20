@@ -165,9 +165,7 @@ Unassociated two-leg & Initiate a new track with zero velocity, zero acceleratio
 
 ## Pursuit Controller
 
-The pursuit controller drives ISERA towards the target person while avoiding obstacles. The driving control is based on the selection of discrete spatial zones with the lowest cost. An advantage of our approach is that no prior mapping is required in the pursue controller, hence, it could work on open outdoor as well as indoor areas. 
-
-The pursuit controller makes use of the target given by the people tracking algorithm. Fig. \ref{fig_pursuit_controller} shows the variables used in the pursuit controller. The coordinate of the target person is described in polar coordinate with range $R_P$, and angle $\theta_{P}$ with respect to the robot heading. To determine the angle $\theta_{BP}$ where the robot should go to pursuit the target, the area surrounding the robot are first divided into $m$ number of spatial `buckets'' zones. The costs of each bucket are subject to evaluation, determined by factors such as the angle of each bucket to the target and to obstacles.
+The pursuit controller drives ISERA towards the tracked target person while avoiding obstacles. The driving control is based on the selection of discrete spatial zones with the lowest cost. Fig. \ref{fig_pursuit_controller} shows the variables used in the pursuit controller. The coordinate of the target person is described in polar coordinate with range $R_P$, and angle $\theta_{P}$ with respect to the robot heading. To determine the angle $\theta_{BP}$ where the robot should go to pursuit the target, the area surrounding the robot are first divided into $m$ number of spatial `buckets'' zones. The costs of each bucket are subject to evaluation, determined by factors such as the angle of each bucket to the target and to obstacles.
 
 \begin{figure}[!t]
 \centering
@@ -179,24 +177,20 @@ vary up depending on the environment (b) The parameters used in the
 pursuit controller} \label{fig_pursuit_controller}
 \end{figure}
 
-A dynamic lookout distance is used to regulate the obstacle detection area where the lookout distance of each buckets $R_{OD}$, are kept to be less than the range to target. The area is shrunk and expanded proportional to the distance to the target $R_P$. In this way, the target person legs would not be regarded as an obstacle to be avoided.
-
-The delta angle of each bucket with respect to the target
+A dynamic lookout distance is used to regulate the obstacle detection area where the lookout distance of each buckets $R_{OD}$, are kept to be less than the range to target. The area is shrunk and expanded proportional to the distance to the target $R_P$. In this way, the target person legs would not be regarded as an obstacle to be avoided. The delta angle of each bucket with respect to the target
 $\delta_{Bn}$ is calculated as,
 \begin{equation}
 \delta_{Bn} = |\theta_{Bn}-\theta_{P}|\,. \label{eq:delta}
 \end{equation}
 where $\theta_{Bn}$ is the angle of the center point in bucket $n$,
-and $\theta_{P}$ is the target angle.
-
-Then, the individual cost of each bucket is calculated as,
+and $\theta_{P}$ is the target angle. Then, the individual cost of each bucket is calculated as,
 \begin{equation}
 cost_{Bn}=\frac{\delta_{Bn}+1}{C_{Bn}}\,. \label{eq:cost}
 \end{equation}
 where $C_{Bn}$ is the distance to the nearest obstacle inside the
 buckets.
 
-Naturally, when there is no obstacle inside the obstacle detection range, the nearest bucket in the direction of the target would have the lowest cost. However, to prevent the robot from going too near into an obstacle, each bucket cost is also influenced by the cost of its neighboring several buckets. This averaging of costs could be seen as a repulsive effect to keep the robot away from the obstacles, while homing to the target pursuit. Finally, by comparing the average cost of each buckets, the center point of the bucket with the lowest average cost is chosen to be the pursuit heading $\theta_{BP}$.
+Naturally, when there is no obstacle inside the obstacle detection range, the nearest bucket in the direction of the target would have the lowest cost. However, to prevent the robot from going too near into an obstacle, each bucket cost is also influenced by the cost of its neighboring several buckets. By comparing the average cost of each buckets, the center point of the bucket with the lowest average cost is chosen to be the pursuit heading $\theta_{BP}$.
 
 The turn velocity $\omega_P$ is chosen to be proportional to pursuit heading angle $\theta_{BP}$,
 \begin{equation}
