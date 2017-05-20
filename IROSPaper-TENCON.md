@@ -250,7 +250,7 @@ The people detection, tracking, and pursuit algorithm has been tested both indoo
 \end{figure*}
 
 
-## People Detection and Tracking Experiment and Results
+## People Detection and Tracking
 
 The first experiment is to verify the tracking ability, conducted while the robot is stationary. A single target tracking tests are coordinated with a person walking repeatedly from one start point and an end point following a line marked on the floor. The purpose of the line is to get the accuracy of the tracking result compared to the ground truth. Moreover, in a cluttered environment legs could be occluded by other people or obstacles. This condition is emulated by adding more people walking around while the primary target is still following the straight path. In order to verify multi-target tracking capability, tracking of two targets of interest were conducted. The paths are two straight lines located with a roughly $65cm$ distance to each other. 
 
@@ -273,9 +273,9 @@ The results of single and multiple target tracking are depicted in Fig.\ref{fig_
 -->
 
 
-## People Following Experiment
+## People Following
 
-In order to demonstrate that the proposed method could tracks and follows a person in a dynamic environment, we conducted a series of experiments in a outdoor public area with obstacles. First, the target person following is initiated by having the target person standing in front of ISERA, and tapping a button on the interface to start the tracking. After this procedure, ISERA will try to maintain $30cm$ distance from the person. To verify robustness of the approach, some disturbance from having people walking around and in between ISERA and its target person is conducted. 
+A series of experiments in a outdoor public area with obstacles to verify that ISERA can follow a person. The target person to be followed is selected by having the target person standing in front of ISERA. ISERA's pursuit controller maintains $30cm$ distance from the person. Some disturbance is emulated by having people walking around and in between ISERA and the target. 
 The results shows ISERA consistently manage to track and follow the target person that walks below ISERA's maximum speed (limited to $1m/s$ in our hardware). When traveling between obstacles, ISERA also able to avoid going too close to the obstacle, and successfully follows the person. 
 
 # Conclusion
