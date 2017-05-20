@@ -280,7 +280,7 @@ The results shows ISERA consistently manage to track and follow the target perso
 
 # Conclusion
 
-In this paper, ISERA service robot algorithms to follow a target person have been presented. The leg identifier offers a flexibility of strictness in the criterion for different circumstances. The person tracker associate the leg to a person and tracks based on the confidence level that is given by the leg identifier. Lastly, the pursuit algorithm could regulate the aggressiveness of the approach, and could be used to avoid obstacle while pursuing the target person. The work presented in this paper is a step towards a service robot that intelligently and gently follows a person in crowded public spaces. Future works should mitigate possible fail scenarios when the person walks too fast or being obstructed for a prolong period of time. To recover and correlate back to a particular person, a sensor fusion that combines 2D Lidar with vision or other sensors are required. 
+In this paper, ISERA service robot algorithms to follow a target person have been presented. The person tracker associate the leg to a person and tracks based on the confidence level that is given by the leg identifier. The pursuit algorithm could regulate control between maintaining the distance to target person and to avoid obstacle. Future works should mitigate possible fail scenarios when the person walks too fast or being obstructed for a prolong period of time. 
 
 <!--
 [Figure 1](#bookmark=id.3acbajmbqepy)
