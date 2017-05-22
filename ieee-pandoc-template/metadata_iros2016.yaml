@@ -37,11 +37,11 @@ author:
       #email: smchan
       #refmark: 3
       #separator: ','
-    #- name: Chia, H. Q.
-      #affiliation: Institute for Infocomm Research
-      #location: 1 Fusionopolis Way, Singapore 138632
-      #email: benjamin-chia
-      #refmark: 5
+    - name: Ng, K. P.
+      affiliation: Institute for Infocomm Research
+      location: 1 Fusionopolis Way, Singapore 138632
+      email: ngkp
+      refmark: 5
       separator: ','
     - name: Ren, Q.
       affiliation: Institute for Infocomm Research
